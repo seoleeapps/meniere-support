@@ -143,3 +143,36 @@ it("exercise backup conflicts preserve the original and sessions appear in selec
   );
   expect(csvExport(j)).toContain("rehabLogs");
 });
+
+it("restores cross-device plans by exercise while keeping the local plan until explicitly replaced", () => {
+  const plan = {
+    id: "local-plan",
+    createdAt: now,
+    updatedAt: now,
+    kind: "gaze_horizontal" as const,
+    instruction: "Local agreed plan",
+    approved: true,
+  };
+  const current = { ...emptyJournal(), rehabPlans: [plan] };
+  const incoming = {
+    ...emptyJournal(),
+    rehabPlans: [
+      {
+        ...plan,
+        id: "other-device-plan",
+        updatedAt: now + 1,
+        instruction: "Different plan",
+        approved: false,
+      },
+    ],
+  };
+  expect(previewRestore(current, incoming).conflicts).toEqual([
+    "rehabPlans:other-device-plan",
+  ]);
+  expect(mergeRestore(current, incoming, []).rehabPlans).toEqual([plan]);
+  const replaced = mergeRestore(current, incoming, [
+    "rehabPlans:other-device-plan",
+  ]);
+  expect(replaced.rehabPlans).toEqual(incoming.rehabPlans);
+  expect(canStartRehab(replaced, "gaze_horizontal", false)).toBe(false);
+});

@@ -11,7 +11,7 @@
   },
   "ledger": {
     "createdAt": "2026-10-03T04:46:14Z",
-    "updatedAt": "2026-10-03T05:26:44Z",
+    "updatedAt": "2026-10-03T06:46:35Z",
     "currentReleaseLedger": "release/market-launch-state.json"
   },
   "sections": {
@@ -24,16 +24,21 @@
           "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "pass",
-          "value": "확정된 로컬 기록·생활 관리·진료 준비 범위",
+          "value": "로컬 기록·생활 관리·진료 준비와 시각 전정재활 운동 도구",
           "owner": "Seorilabs",
           "evidence": [
             {
               "kind": "document",
               "ref": "docs/approved-contract.md",
               "observedAt": "2026-10-03T05:26:44Z"
+            },
+            {
+              "kind": "document",
+              "ref": "docs/rehab-program.md",
+              "observedAt": "2026-10-03T06:46:35Z"
             }
           ],
-          "checkedAt": "2026-10-03T05:26:44Z",
+          "checkedAt": "2026-10-03T06:46:35Z",
           "reviewBy": null,
           "blocker": null,
           "notes": null
@@ -89,7 +94,7 @@
           "evidence": [],
           "checkedAt": "2026-10-03T05:26:44Z",
           "reviewBy": null,
-          "blocker": "전 세계 무료 목표는 승인됨. 국가별 의료·개인정보 검토 전",
+          "blocker": "전 세계 무료 목표는 승인됨. 시각 운동 도구 기능의 국가별 분류·의료·개인정보 검토 전",
           "notes": null
         },
         {

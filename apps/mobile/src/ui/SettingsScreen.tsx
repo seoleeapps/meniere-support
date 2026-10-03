@@ -7,12 +7,14 @@ import {
   previewRestore,
   type Journal,
   type Language,
+  type RehabPlan,
 } from "@meniere/product-core";
 import type { EncryptedJournal } from "../adapters/storage";
 import { ads } from "../adapters/ads";
 import { documents, sharing } from "../adapters/documents";
 import { Button, Card, Choices, Copy, Field, Heading } from "./components";
 import { translator } from "./labels";
+import { rehabName } from "./rehab-content";
 import type { ScreenProps } from "./screen-types";
 export function SettingsScreen({
   journal: j,
@@ -333,6 +335,8 @@ export function SettingsScreen({
                     | "habits"
                     | "habitLogs"
                     | "visits"
+                    | "rehabPlans"
+                    | "rehabLogs"
                 ];
               const record = records.find((r) => r.id === id)!;
               const kind = {
@@ -341,13 +345,28 @@ export function SettingsScreen({
                 habits: t("생활 항목", "Habit"),
                 habitLogs: t("생활 확인", "Habit check-in"),
                 visits: t("진료 준비", "Visit preparation"),
+                rehabPlans: t("운동 계획", "Exercise plan"),
+                rehabLogs: t("운동 수행", "Exercise session"),
               }[collection];
+              const detail =
+                collection === "rehabPlans" || collection === "rehabLogs"
+                  ? [
+                      "date" in record ? record.date : "",
+                      rehabName((record as RehabPlan).kind, t),
+                    ]
+                      .filter(Boolean)
+                      .join(" · ")
+                  : "date" in record
+                    ? record.date
+                    : "title" in record
+                      ? record.title
+                      : "";
               return (
                 <Button
                   key={key}
                   secondary
                   disabled={busy}
-                  label={`${replace.includes(key) ? "✓ " : ""}${kind} · ${"date" in record ? record.date : "title" in record ? record.title : ""} · ${t("교체", "Replace")}`}
+                  label={`${replace.includes(key) ? "✓ " : ""}${kind} · ${detail} · ${t("교체", "Replace")}`}
                   onPress={() =>
                     setReplace(
                       replace.includes(key)
