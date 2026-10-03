@@ -38,5 +38,6 @@ Google Play·AdMob 대상은 `wellknowngeek@gmail.com`이다. AdMob 로그인 �
 - [SQLCipher export와 무결성 검사](https://www.zetetic.net/sqlcipher/sqlcipher-api/)
 - [Expo FileSystem](https://docs.expo.dev/versions/latest/sdk/filesystem/): SDK 57의 `copy`·`move`는 비동기이므로 완료를 기다린다.
 - [Google 사용자 동의 관리](https://developers.google.com/admob/android/privacy)
+- [Expo Android 권한 제외](https://docs.expo.dev/guides/permissions/)와 [화면 캡처 방지](https://docs.expo.dev/versions/latest/sdk/screen-capture/): 캡처 방지에 사진 접근 권한은 필요하지 않다.
 
 의료 도움 문구의 원 출처와 검토 한계는 `initial-plan.md`에 보존했다. 의료진 검수는 완료되지 않았다.
