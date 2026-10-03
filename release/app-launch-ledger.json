@@ -1360,12 +1360,17 @@
               "kind": "console",
               "ref": "Health declaration saved and reread: activity, nutrition, sleep, conditions, education, rehabilitation; medical-device unchecked",
               "observedAt": "2026-10-03T13:05:10.619344+00:00"
+            },
+            {
+              "kind": "console",
+              "ref": "play-store/policy/account-eligibility-receipt.json: user-approved private support inquiry submitted for Meniere Journal; case 6-9591000041645 open and submitted summary reread. Support response pending. No account conversion performed.",
+              "observedAt": "2026-10-03T23:07:23.738132+00:00"
             }
           ],
-          "checkedAt": "2026-10-03T13:05:10.619344+00:00",
+          "checkedAt": "2026-10-03T23:07:23.738132+00:00",
           "reviewBy": null,
           "blocker": null,
-          "notes": "Other declarations and review are pending. Organization conversion not required by current form; no review approval inferred."
+          "notes": "Saved health declaration is not eligibility approval. The user-approved support inquiry was submitted on 2026-10-04 KST; case 6-9591000041645 is open, awaiting support response. Account conversion was not authorized or performed. Data safety, country selection and final review remain pending."
         },
         {
           "id": "policy.apple_declarations",
