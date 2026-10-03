@@ -59,16 +59,16 @@ export function RehabScreen({
     [stopping, setStopping] = useState(false);
   const [editing, setEditing] = useState<RehabLog | null>(null);
   const lastTick = useRef(0),
-    latest = useRef({ j, commit, program, record }),
+    latest = useRef({ j, commit, program, record, kind }),
     foreground = useRef(AppState.currentState === "active");
-  latest.current = { j, commit, program, record };
+  latest.current = { j, commit, program, record, kind };
   useEffect(() => {
     const p = j.rehabPlans.find((p) => p.kind === kind);
     setInstruction(p?.instruction ?? "");
     setApproved(p?.approved ?? false);
     setSeconds(p?.targetSeconds ?? null);
     setRounds(p?.plannedRounds ?? null);
-  }, [kind, j.rehabPlans]);
+  }, [kind]);
   useEffect(() => {
     onEditingChange(Boolean(program || editing));
     return () => onEditingChange(false);
@@ -549,7 +549,10 @@ export function RehabScreen({
         }
         onChange={() => {
           if (busy) return;
-          void commit(withPlan(!approved));
+          const next = !approved;
+          void commit(withPlan(next)).then((ok) => {
+            if (ok && latest.current.kind === kind) setApproved(next);
+          });
         }}
       />
       <Copy muted>
