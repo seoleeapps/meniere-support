@@ -117,9 +117,9 @@
           "evidence": [
             "Live app 4975784705764720395: health, privacy URL, ads yes, access unrestricted, government no, financial none, 18+ target and AD_ID purposes saved. IARC questionnaire summary saved: ESRB Everyone, PEGI 3.",
             "Google Play account policy requires Organization for Medical health services; current app contains declared disease-management and rehabilitation features. Existing personal-account applicability remains unconfirmed. No account conversion or regulatory certification is claimed.",
-            "play-store/policy/account-eligibility-question.md: support inquiry draft prepared; user permission to send pending. Clinician product review and country classification remain uncompleted."
+            "2026-10-04 user approved sending the prepared inquiry. Console showed ticket submitted for Meniere Journal, creator wellknowngeek@gmail.com; case 6-9591000041645 open and submitted summary reread. Support response pending. play-store/policy/account-eligibility-question.md and account-eligibility-receipt.json preserve the approved full attachment and receipt. No account conversion performed; clinician product review and country classification remain uncompleted."
           ],
-          "checkedAt": "2026-10-03T13:38:19.927599+00:00",
+          "checkedAt": "2026-10-03T23:07:23.738132+00:00",
           "blocker": null
         },
         "submission": {
