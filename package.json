@@ -1,0 +1,29 @@
+{
+  "name": "meniere-support",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.3.0",
+  "scripts": {
+    "test:core": "vitest run packages/product-core/tests",
+    "test:platform": "vitest run apps/mobile/src/**/*.test.ts",
+    "check:architecture": "node scripts/check-architecture.mjs",
+    "typecheck": "tsc --noEmit",
+    "check": "pnpm typecheck && pnpm test:core && pnpm test:platform && pnpm check:architecture && pnpm check:metadata",
+    "check:release": "node scripts/check-release.mjs",
+    "start": "pnpm --dir apps/mobile exec expo start --dev-client",
+    "prebuild": "pnpm --dir apps/mobile exec expo prebuild",
+    "android": "pnpm --dir apps/mobile exec expo run:android",
+    "ios": "pnpm --dir apps/mobile exec expo run:ios",
+    "check:metadata": "node scripts/check-release.mjs --schema-only"
+  },
+  "devDependencies": {
+    "@expo/config-plugins": "^57.0.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "prettier": "3.7.4",
+    "tsx": "4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.0",
+    "ws": "8.18.3"
+  }
+}

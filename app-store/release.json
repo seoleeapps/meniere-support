@@ -1,0 +1,13 @@
+{
+  "bundleId": "com.seoleeapps.menieresupport",
+  "name": { "ko": "메니에르 기록", "en": "Meniere Journal" },
+  "teamId": "HCDUXX4Z3X",
+  "countries": "worldwide_goal",
+  "price": "free",
+  "ads": "banner_non_personalized",
+  "category": "HEALTH_AND_FITNESS",
+  "registrationStatus": "pending_live_verification",
+  "appPrivacy": "pending_sdk_audit",
+  "encryptionCompliance": "pending_sqlcipher_review",
+  "supportEmail": "cs@seorilabs.com"
+}

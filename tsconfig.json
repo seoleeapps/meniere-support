@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "noEmit": true
+  },
+  "include": [
+    "packages/**/*.ts",
+    "apps/mobile/src/**/*.ts",
+    "apps/mobile/src/**/*.tsx",
+    "apps/mobile/App.tsx",
+    "apps/mobile/index.ts"
+  ]
+}
