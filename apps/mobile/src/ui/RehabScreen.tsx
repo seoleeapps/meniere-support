@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Alert, AppState, Linking } from "react-native";
+import { Alert, AppState, Linking, View } from "react-native";
 import {
   advanceProgram,
   canStartRehab,
@@ -21,7 +21,6 @@ import {
 } from "./rehab-content";
 import { RehabDemo, RestPicture } from "./RehabVisual";
 import { RehabStage } from "./RehabStage";
-import { View } from "react-native";
 import type { ScreenProps } from "./screen-types";
 const kinds: RehabKind[] = [
   "gaze_horizontal",
@@ -248,7 +247,16 @@ export function RehabScreen({
       setProgram(null);
       setRecord(null);
       setSafe(false);
+      setBefore("");
+      setAfter("");
+      setNote("");
     }
+  };
+  const closeEditing = () => {
+    setEditing(null);
+    setBefore("");
+    setAfter("");
+    setNote("");
   };
   if (program && record) {
     return (
@@ -338,7 +346,7 @@ export function RehabScreen({
           secondary
           disabled={busy}
           label={t("돌아가기", "Back")}
-          onPress={() => setEditing(null)}
+          onPress={closeEditing}
         />
         <Heading>{rehabName(editing.kind, t)}</Heading>
         <Copy>
@@ -392,7 +400,7 @@ export function RehabScreen({
                 ),
               }))
             )
-              setEditing(null);
+              closeEditing();
           }}
         />
         <Button
@@ -414,7 +422,7 @@ export function RehabScreen({
                       ...j,
                       rehabLogs: j.rehabLogs.filter((l) => l.id !== editing.id),
                     }).then((ok) => {
-                      if (ok) setEditing(null);
+                      if (ok) closeEditing();
                     }),
                 },
               ],

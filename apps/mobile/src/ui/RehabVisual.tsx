@@ -96,6 +96,13 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
           paddingVertical: 16,
         }}
       >
+        {kind !== "balance_supported" && (
+          <Text style={{ color: p.muted, fontSize: 14, marginBottom: 8 }}>
+            {horizontal
+              ? t("위에서 본 시범", "Demonstration · top view")
+              : t("옆에서 본 시범", "Demonstration · side view")}
+          </Text>
+        )}
         <View
           style={{
             width: 300,
