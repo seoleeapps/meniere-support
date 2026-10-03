@@ -7,7 +7,7 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import Svg, { Circle, Ellipse, Line, Path, Rect } from "react-native-svg";
+import Svg, { Circle, Ellipse, G, Line, Path, Rect } from "react-native-svg";
 import type { RehabKind } from "@meniere/product-core";
 import { Button, Copy, usePalette } from "./components";
 import type { translator } from "./labels";
@@ -19,6 +19,7 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
   const p = usePalette();
   const { width } = useWindowDimensions();
   const movement = useRef(new Animated.Value(0)).current;
+  const [frame, setFrame] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [reduced, setReduced] = useState(true);
   const [foreground, setForeground] = useState(
@@ -43,6 +44,10 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
     };
   }, []);
   useEffect(() => {
+    const listener = movement.addListener(({ value }) => setFrame(value));
+    return () => movement.removeListener(listener);
+  }, [movement]);
+  useEffect(() => {
     movement.setValue(0);
     if (!playing || reduced || !foreground || kind === "balance_supported")
       return;
@@ -51,17 +56,17 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
         Animated.timing(movement, {
           toValue: 1,
           duration: 1400,
-          useNativeDriver: true,
+          useNativeDriver: false,
         }),
         Animated.timing(movement, {
           toValue: -1,
           duration: 2800,
-          useNativeDriver: true,
+          useNativeDriver: false,
         }),
         Animated.timing(movement, {
           toValue: 0,
           duration: 1400,
-          useNativeDriver: true,
+          useNativeDriver: false,
         }),
       ]),
     );
@@ -69,6 +74,20 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
     return () => animation.stop();
   }, [kind, playing, reduced, foreground, movement]);
   const horizontal = kind === "gaze_horizontal";
+  const angle = frame * (horizontal ? 18 : 10);
+  const radians = (angle * Math.PI) / 180;
+  const headX = horizontal ? 105 : 86;
+  const headY = horizontal ? 103 : 94;
+  const eyes = horizontal
+    ? [
+        [32, 24],
+        [58, 24],
+      ]
+    : [[61, 34]];
+  const gazeOrigins = eyes.map(([x, y]) => ({
+    x: headX + 45 + (x - 45) * Math.cos(radians) - (y - 45) * Math.sin(radians),
+    y: headY + 45 + (x - 45) * Math.sin(radians) + (y - 45) * Math.cos(radians),
+  }));
   return (
     <>
       <View
@@ -113,148 +132,129 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
           {kind === "balance_supported" ? (
             <RestPicture standing />
           ) : (
-            <>
-              <Svg width={300} height={230} viewBox="0 0 300 230">
+            <Svg
+              width={300}
+              height={230}
+              viewBox="0 0 300 230"
+              accessible={false}
+            >
+              {horizontal ? (
+                <>
+                  <Rect
+                    x={128}
+                    y={5}
+                    width={44}
+                    height={66}
+                    rx={8}
+                    fill={p.card}
+                    stroke={p.ink}
+                    strokeWidth={3}
+                  />
+                  <Path
+                    d="M140 24 L160 44 M160 24 L140 44 M127 78 H173 M150 71 V78"
+                    stroke={p.ink}
+                    strokeWidth={3}
+                  />
+                  <Path
+                    d="M100 202 Q150 172 200 202 V223 H100 Z"
+                    fill={p.accent}
+                  />
+                  <Path
+                    d="M94 124 Q65 150 94 176 M85 123 L96 122 L94 135 M85 176 L96 178 L94 165 M206 124 Q235 150 206 176 M215 123 L204 122 L206 135 M215 176 L204 178 L206 165"
+                    fill="none"
+                    stroke={p.accent}
+                    strokeWidth={3}
+                  />
+                </>
+              ) : (
+                <>
+                  <Rect
+                    x={248}
+                    y={100}
+                    width={40}
+                    height={65}
+                    rx={8}
+                    fill={p.card}
+                    stroke={p.ink}
+                    strokeWidth={3}
+                  />
+                  <Path
+                    d="M258 118 L278 138 M278 118 L258 138 M244 179 H292 M268 165 V179"
+                    stroke={p.ink}
+                    strokeWidth={3}
+                  />
+                  <Path
+                    d="M105 190 Q133 181 154 199 L166 227 H101 Z"
+                    fill={p.accent}
+                  />
+                  <Path
+                    d="M178 97 Q203 130 178 163 M171 100 L178 90 L187 99 M171 160 L178 170 L187 161"
+                    fill="none"
+                    stroke={p.accent}
+                    strokeWidth={3}
+                  />
+                </>
+              )}
+              {gazeOrigins.map((eye, i) => (
+                <Line
+                  key={i}
+                  x1={eye.x}
+                  y1={eye.y}
+                  x2={horizontal ? 150 : 268}
+                  y2={horizontal ? 34 : 128}
+                  stroke={p.accent}
+                  strokeWidth={2}
+                  strokeDasharray="5 5"
+                />
+              ))}
+              <G
+                transform={`translate(${headX} ${headY}) rotate(${angle} 45 45)`}
+              >
                 {horizontal ? (
                   <>
-                    <Rect
-                      x={128}
-                      y={5}
-                      width={44}
-                      height={66}
-                      rx={8}
+                    <Ellipse
+                      cx={45}
+                      cy={47}
+                      rx={33}
+                      ry={35}
                       fill={p.card}
                       stroke={p.ink}
                       strokeWidth={3}
                     />
                     <Path
-                      d="M140 24 L160 44 M160 24 L140 44 M127 78 H173 M150 71 V78"
+                      d="M39 17 L45 5 L51 17 M11 40 V56 M79 40 V56"
+                      fill={p.card}
                       stroke={p.ink}
                       strokeWidth={3}
                     />
                     <Path
-                      d="M100 202 Q150 172 200 202 V223 H100 Z"
-                      fill={p.accent}
-                    />
-                    <Path
-                      d="M94 124 Q65 150 94 176 M85 123 L96 122 L94 135 M85 176 L96 178 L94 165 M206 124 Q235 150 206 176 M215 123 L204 122 L206 135 M215 176 L204 178 L206 165"
+                      d="M17 62 Q45 86 73 62"
                       fill="none"
-                      stroke={p.accent}
-                      strokeWidth={3}
+                      stroke={p.muted}
+                      strokeWidth={5}
                     />
                   </>
                 ) : (
                   <>
-                    <Rect
-                      x={248}
-                      y={100}
-                      width={40}
-                      height={65}
-                      rx={8}
-                      fill={p.card}
-                      stroke={p.ink}
-                      strokeWidth={3}
-                    />
-                    <Path
-                      d="M258 118 L278 138 M278 118 L258 138 M244 179 H292 M268 165 V179"
-                      stroke={p.ink}
-                      strokeWidth={3}
-                    />
-                    <Path
-                      d="M105 190 Q133 181 154 199 L166 227 H101 Z"
-                      fill={p.accent}
-                    />
-                    <Path
-                      d="M178 97 Q203 130 178 163 M171 100 L178 90 L187 99 M171 160 L178 170 L187 161"
-                      fill="none"
-                      stroke={p.accent}
-                      strokeWidth={3}
-                    />
-                  </>
-                )}
-              </Svg>
-              <Animated.View
-                style={{
-                  position: "absolute",
-                  left: horizontal ? 105 : 86,
-                  top: horizontal ? 103 : 94,
-                  width: 90,
-                  height: 90,
-                  transform: [
-                    {
-                      rotate: movement.interpolate({
-                        inputRange: [-1, 0, 1],
-                        outputRange: horizontal
-                          ? ["-18deg", "0deg", "18deg"]
-                          : ["-10deg", "0deg", "10deg"],
-                      }),
-                    },
-                  ],
-                }}
-              >
-                <Svg width={90} height={90} viewBox="0 0 90 90">
-                  {horizontal ? (
-                    <>
-                      <Ellipse
-                        cx={45}
-                        cy={47}
-                        rx={33}
-                        ry={35}
-                        fill={p.card}
-                        stroke={p.ink}
-                        strokeWidth={3}
-                      />
-                      <Path
-                        d="M39 17 L45 5 L51 17 M11 40 V56 M79 40 V56"
-                        fill="none"
-                        stroke={p.ink}
-                        strokeWidth={3}
-                      />
-                    </>
-                  ) : (
                     <Path
                       d="M24 74 Q7 55 17 26 Q24 7 44 10 Q66 11 70 28 L80 42 L70 47 V63 Q62 78 44 75 V88 H24 Z"
                       fill={p.card}
                       stroke={p.ink}
                       strokeWidth={3}
                     />
-                  )}
-                </Svg>
-              </Animated.View>
-              <Svg
-                width={300}
-                height={230}
-                viewBox="0 0 300 230"
-                style={{ position: "absolute" }}
-              >
-                {horizontal ? (
-                  <>
                     <Path
-                      d="M140 145 L150 73 L160 145"
-                      stroke={p.accent}
-                      strokeWidth={2}
-                      strokeDasharray="5 5"
+                      d="M20 58 Q8 37 22 21 Q35 7 50 14"
                       fill="none"
+                      stroke={p.muted}
+                      strokeWidth={5}
                     />
-                    <Circle cx={140} cy={145} r={4} fill={p.ink} />
-                    <Circle cx={160} cy={145} r={4} fill={p.ink} />
-                  </>
-                ) : (
-                  <>
-                    <Line
-                      x1={145}
-                      y1={128}
-                      x2={245}
-                      y2={128}
-                      stroke={p.accent}
-                      strokeWidth={2}
-                      strokeDasharray="5 5"
-                    />
-                    <Circle cx={145} cy={128} r={4} fill={p.ink} />
                   </>
                 )}
-              </Svg>
-            </>
+                {eyes.map(([x, y], i) => (
+                  <Circle key={i} cx={x} cy={y} r={4} fill={p.ink} />
+                ))}
+              </G>
+            </Svg>
           )}
         </View>
         <Text
