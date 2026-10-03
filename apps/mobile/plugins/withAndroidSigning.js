@@ -3,12 +3,17 @@ const { withAppBuildGradle } = require("@expo/config-plugins");
 module.exports = (config) =>
   withAppBuildGradle(config, (c) => {
     if (c.modResults.language !== "groovy") {
-      throw new Error("Android release signing requires the Expo Groovy template.");
+      throw new Error(
+        "Android release signing requires the Expo Groovy template.",
+      );
     }
     const source = c.modResults.contents;
-    const release = /(release\s*\{\s*)(?:\/\/[^\n]*\n\s*)*signingConfig signingConfigs\.debug/;
+    const release =
+      /(release\s*\{\s*)(?:\/\/[^\n]*\n\s*)*signingConfig signingConfigs\.debug/;
     if (!release.test(source) || !source.includes("    signingConfigs {")) {
-      throw new Error("Android signing template changed; review before building.");
+      throw new Error(
+        "Android signing template changed; review before building.",
+      );
     }
     c.modResults.contents = source
       .replace(

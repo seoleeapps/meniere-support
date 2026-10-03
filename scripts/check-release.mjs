@@ -23,7 +23,10 @@ const releaseGates = [
 for (const [id, gate] of releaseGates) {
   assert.ok(["pending", "pass", "na", "blocked"].includes(gate.status), id);
   if (["pass", "na"].includes(gate.status)) {
-    assert.ok(gate.evidence.length && gate.checkedAt, id + " requires evidence");
+    assert.ok(
+      gate.evidence.length && gate.checkedAt,
+      id + " requires evidence",
+    );
   }
   if (gate.status === "blocked") {
     assert.ok(gate.blocker && gate.checkedAt, id + " requires a blocker");
@@ -68,7 +71,9 @@ if (process.argv.includes("--schema-only")) {
   );
   for (const item of pending) console.error(`${item.id}: ${item.status}`);
   for (const [id, gate] of gates)
-    console.error(`${id}: ${gate.status}${gate.blocker ? " — " + gate.blocker : ""}`);
+    console.error(
+      `${id}: ${gate.status}${gate.blocker ? " — " + gate.blocker : ""}`,
+    );
   assert.equal(
     pending.length + gates.length,
     0,

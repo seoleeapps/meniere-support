@@ -6,10 +6,7 @@
     "name": "Meniere Journal",
     "repo": "seoleeapps/meniere-support",
     "type": "non_game",
-    "targetMarkets": [
-      "google_play",
-      "app_store"
-    ],
+    "targetMarkets": ["google_play", "app_store"],
     "lifecycleState": "qa"
   },
   "ledger": {
@@ -24,9 +21,7 @@
         {
           "id": "governance.product_contract",
           "title": "제품 목적, 핵심 사용자, 핵심 흐름과 비범위를 승인했다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "pass",
           "value": "로컬 기록·생활 관리·진료 준비와 시각 전정재활 운동 도구",
@@ -51,9 +46,7 @@
         {
           "id": "governance.planning_approval",
           "title": "기획 승인 주체, 시각과 근거가 기록됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "once",
           "status": "pass",
           "value": "Implement the plan. 사용자 승인",
@@ -73,9 +66,7 @@
         {
           "id": "governance.market_scope",
           "title": "대상 마켓과 제외 마켓의 근거가 확정됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "pass",
           "value": "Android·iOS 우선, AIT 후속",
@@ -95,9 +86,7 @@
         {
           "id": "governance.countries_pricing_rollout",
           "title": "국가, 가격, 무료 여부와 단계적 또는 전체 공개 방식이 확정됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -111,9 +100,7 @@
         {
           "id": "governance.owners",
           "title": "제품, 기술, 정책, 고객지원, 마켓 운영 담당자가 지정됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "quarterly",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -127,9 +114,7 @@
         {
           "id": "governance.deployment_approval_contract",
           "title": "정확한 후보와 마켓을 대상으로 공개 승인 근거를 남기는 절차가 있다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "pass",
           "value": "출시 요청과 필수 검증 조건을 별도로 기록",
@@ -149,9 +134,7 @@
         {
           "id": "governance.source_of_truth",
           "title": "기획, 제품 원장, 릴리스 원장과 콘솔 중 각 사실의 정본이 정의됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "pass",
           "value": "기획 원문, 실행 계약, 제품 원장, 출시 상태 분리",
@@ -176,9 +159,7 @@
         {
           "id": "identity.names",
           "title": "내부 앱 ID와 한국어·영어·현지화 표시 이름이 확정됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "pass",
           "value": "메니에르 기록 / Meniere Journal",
@@ -198,9 +179,7 @@
         {
           "id": "identity.repository",
           "title": "저장소, 원격 기본 브랜치와 릴리스 소스 경로가 확인됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "공개 저장소, 기본 main, feat/offline-journal PR",
@@ -220,9 +199,7 @@
         {
           "id": "identity.android_package",
           "title": "Android package name과 실제 Play 앱 소유권이 일치한다",
-          "appliesTo": [
-            "google_play"
-          ],
+          "appliesTo": ["google_play"],
           "reviewCadence": "on_change",
           "status": "pass",
           "value": "검증 필요",
@@ -242,9 +219,7 @@
         {
           "id": "identity.ios_bundle",
           "title": "iOS bundle ID, App Store Connect 앱과 Apple 팀이 일치한다",
-          "appliesTo": [
-            "app_store"
-          ],
+          "appliesTo": ["app_store"],
           "reviewCadence": "on_change",
           "status": "blocked",
           "value": "검증 필요",
@@ -258,9 +233,7 @@
         {
           "id": "identity.ait_app_name",
           "title": "영구 AppsInToss appName과 콘솔 앱이 일치한다",
-          "appliesTo": [
-            "apps_in_toss"
-          ],
+          "appliesTo": ["apps_in_toss"],
           "reviewCadence": "on_change",
           "status": "na",
           "value": "해당 없음",
@@ -280,9 +253,7 @@
         {
           "id": "identity.play_account",
           "title": "Google Play 개발자 계정 이름, 유형, ID와 앱 소유권을 확인했다",
-          "appliesTo": [
-            "google_play"
-          ],
+          "appliesTo": ["google_play"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "검증 필요",
@@ -302,9 +273,7 @@
         {
           "id": "identity.apple_account",
           "title": "Apple 팀, provider, 계약과 App Store Connect 역할을 확인했다",
-          "appliesTo": [
-            "app_store"
-          ],
+          "appliesTo": ["app_store"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -318,9 +287,7 @@
         {
           "id": "identity.ait_account",
           "title": "AppsInToss 조직, 앱 ID와 운영 권한을 확인했다",
-          "appliesTo": [
-            "apps_in_toss"
-          ],
+          "appliesTo": ["apps_in_toss"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -340,9 +307,7 @@
         {
           "id": "identity.firebase_project",
           "title": "Firebase와 GCP project ID·number 및 환경 소유권이 등록됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "na",
           "value": "해당 없음",
@@ -362,9 +327,7 @@
         {
           "id": "identity.ga4_property_streams",
           "title": "GA4 property와 Android·iOS·Web 앱 스트림 매핑이 기록됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "na",
           "value": "해당 없음",
@@ -384,9 +347,7 @@
         {
           "id": "identity.platform_app",
           "title": "Seorilabs Platform 앱·카탈로그 식별자와 지원 기능 범위가 기록됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "na",
           "value": "해당 없음",
@@ -406,9 +367,7 @@
         {
           "id": "identity.support_urls",
           "title": "고객지원 연락처와 개인정보·약관·계정삭제 URL이 확정됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "quarterly",
           "status": "pass",
           "value": "한영 개인정보 페이지 HTTP 200, cs@seorilabs.com",
@@ -428,9 +387,7 @@
         {
           "id": "identity.credential_catalog",
           "title": "공용·앱 전용 자격증명의 논리 ID와 scope만 카탈로그에 등록됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "app/meniere-support/identity 및 AdMob public-identifiers 등록",
@@ -455,9 +412,7 @@
         {
           "id": "engineering.architecture_boundary",
           "title": "제품 코어와 Firebase·엔진·마켓 SDK 어댑터 경계가 검증된다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "플랫폼 독립 코어, 네이티브 저장·문서·광고 어댑터",
@@ -477,9 +432,7 @@
         {
           "id": "engineering.runtime_targets",
           "title": "지원 운영체제, 기기, 화면, 최소·대상 SDK와 엔진 버전이 확정됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "Android Seeker API36 및 iPhone16Pro iOS18.1 시뮬레이터 빌드·실행",
@@ -499,9 +452,7 @@
         {
           "id": "engineering.environment_separation",
           "title": "개발·스테이징·프로덕션 앱과 백엔드 설정이 혼용되지 않는다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "기본 개발/QA는 샘플 광고 ID, production만 앱 전용 ID",
@@ -521,9 +472,7 @@
         {
           "id": "engineering.versioning",
           "title": "마케팅 버전, 빌드 번호, versionCode와 태그 정책이 충돌 없이 동작한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "0.1.0, Android versionCode1, DB schema1",
@@ -543,9 +492,7 @@
         {
           "id": "engineering.ci_quality",
           "title": "lint, typecheck, 테스트, 아키텍처와 릴리스 설정 검사가 CI에 있다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -565,9 +512,7 @@
         {
           "id": "engineering.release_pipeline",
           "title": "명시적 태그 또는 릴리스에서만 마켓 업로드가 실행되고 실행 ID가 남는다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -581,10 +526,7 @@
         {
           "id": "engineering.signing_provisioning",
           "title": "앱별 서명·프로비저닝 identity와 만료·복구 절차가 검증됐다",
-          "appliesTo": [
-            "google_play",
-            "app_store"
-          ],
+          "appliesTo": ["google_play", "app_store"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -598,9 +540,7 @@
         {
           "id": "engineering.startup_branding",
           "title": "Android·iOS·AppsInToss 시작 화면이 제품 브랜딩과 첫 화면에 맞는다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "제품 아이콘과 정적 시작 화면",
@@ -620,9 +560,7 @@
         {
           "id": "engineering.localization_accessibility",
           "title": "지원 언어, 글꼴, safe area, 글자 크기와 접근성 기본 계약이 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -636,9 +574,7 @@
         {
           "id": "engineering.migration_rollback",
           "title": "저장 데이터·스키마·설정 마이그레이션과 롤백·중단 기준이 있다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "DB schema1, 이후 버전 거부, 원본 보존 후 백업 미리보기",
@@ -663,9 +599,7 @@
         {
           "id": "backend.firebase_apps",
           "title": "각 패키지·번들·웹 대상의 Firebase 앱 등록과 최종 설정 파일이 일치한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -685,9 +619,7 @@
         {
           "id": "backend.auth",
           "title": "필요한 인증 공급자, 리디렉션, 익명·계정 연결과 실패 정책이 운영 상태다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -707,9 +639,7 @@
         {
           "id": "backend.app_check",
           "title": "플랫폼별 App Check 공급자, 등록 버전과 enforcement가 실제 배포 경로에서 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -729,9 +659,7 @@
         {
           "id": "backend.firestore",
           "title": "Firestore Rules, indexes, TTL과 실제 배포 버전이 읽혔다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -751,9 +679,7 @@
         {
           "id": "backend.storage",
           "title": "Cloud Storage bucket, Rules, 수명주기와 업·다운로드 경로가 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -773,9 +699,7 @@
         {
           "id": "backend.functions_services",
           "title": "Functions·Cloud Run·API의 리전, revision, 권한과 health가 운영에서 읽혔다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -795,9 +719,7 @@
         {
           "id": "backend.remote_config",
           "title": "Remote Config 기본값, 운영 템플릿, fetch·activate와 실패 기본값이 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -817,9 +739,7 @@
         {
           "id": "backend.notifications",
           "title": "알림 사용 여부, FCM/APNs 자격과 opt-in·deep link 동작을 확인했다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "선택형 로컬 알림, 건강 내용을 넣지 않는 잠금 화면 문구",
@@ -839,9 +759,7 @@
         {
           "id": "backend.platform_identity",
           "title": "Platform 인증·세션 발급과 미인증 실패 닫힘 동작이 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -861,9 +779,7 @@
         {
           "id": "backend.platform_capabilities",
           "title": "카탈로그, entitlement, purchase verifier, Presence 등 실제 사용 기능이 활성화·검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -883,9 +799,7 @@
         {
           "id": "backend.cost_resilience",
           "title": "Billing, 예산, quota, 데이터 보존·백업과 장애 복구 기준이 있다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "quarterly",
           "status": "na",
           "value": "해당 없음",
@@ -910,9 +824,7 @@
         {
           "id": "analytics.measurement_plan",
           "title": "핵심 사용자 흐름, 이벤트 이름·매개변수·중복 규칙과 소유자가 정의됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "na",
           "value": "해당 없음",
@@ -932,10 +844,7 @@
         {
           "id": "analytics.native_stream_identity",
           "title": "각 네이티브 앱이 올바른 Firebase Analytics 앱 스트림 identity를 사용한다",
-          "appliesTo": [
-            "google_play",
-            "app_store"
-          ],
+          "appliesTo": ["google_play", "app_store"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -955,9 +864,7 @@
         {
           "id": "analytics.ait_stream_identity",
           "title": "AppsInToss 런타임 이벤트의 stream, appName, 버전과 기기 구분이 정의됐다",
-          "appliesTo": [
-            "apps_in_toss"
-          ],
+          "appliesTo": ["apps_in_toss"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -977,9 +884,7 @@
         {
           "id": "analytics.consent",
           "title": "분석·광고 동의 기본값, 변경·철회와 정책 문구가 구현됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -999,9 +904,7 @@
         {
           "id": "analytics.activation_funnel",
           "title": "설치·첫 실행·온보딩·첫 가치·핵심 반복 흐름을 계산할 이벤트가 있다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1021,9 +924,7 @@
         {
           "id": "analytics.release_dimensions",
           "title": "마켓, 플랫폼, 앱 버전, 빌드와 실험을 구분할 수 있다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1043,9 +944,7 @@
         {
           "id": "analytics.debug_validation",
           "title": "현재 후보 이벤트가 DebugView 또는 검증 엔드포인트에서 형식 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1065,9 +964,7 @@
         {
           "id": "analytics.live_collection",
           "title": "현재 후보 기기의 이벤트가 GA4 Realtime 또는 보고서에서 실제 수집됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1087,9 +984,7 @@
         {
           "id": "analytics.bigquery_link",
           "title": "GA4 BigQuery 링크, 프로젝트, 데이터 위치와 내보내기 설정이 읽혔다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "quarterly",
           "status": "na",
           "value": "해당 없음",
@@ -1109,9 +1004,7 @@
         {
           "id": "analytics.bigquery_rows",
           "title": "현재 앱·스트림·버전의 export 행이 BigQuery에서 읽혔다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1131,9 +1024,7 @@
         {
           "id": "analytics.reporting_config",
           "title": "핵심 이벤트, 사용자 속성, 맞춤 측정기준과 보고서 설정이 현재 계약과 일치한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "quarterly",
           "status": "na",
           "value": "해당 없음",
@@ -1153,9 +1044,7 @@
         {
           "id": "analytics.crash_performance",
           "title": "Crashlytics·성능 수집, 심볼 업로드와 버전별 확인 경로가 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1175,9 +1064,7 @@
         {
           "id": "analytics.metric_definitions",
           "title": "DAU, 신규 사용자, 활성화, D1·D7·D28 잔존율과 관찰 창이 문서화됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "quarterly",
           "status": "na",
           "value": "해당 없음",
@@ -1197,9 +1084,7 @@
         {
           "id": "analytics.dashboard_alerts",
           "title": "대시보드·Backoffice·알림이 누락·지연·읽기 실패를 0과 구분한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "monthly",
           "status": "na",
           "value": "해당 없음",
@@ -1224,9 +1109,7 @@
         {
           "id": "monetization.market_matrix",
           "title": "마켓별 광고·IAP·구독 지원과 미지원 동작이 확정됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "pass",
           "value": "Android/iOS 무료·배너 전용, 결제 없음",
@@ -1246,9 +1129,7 @@
         {
           "id": "monetization.ad_configuration",
           "title": "운영 광고 provider, 앱·지면 ID, 빈도 제한과 테스트 분리가 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "계정 이메일 및 게시자 확인, 두 플랫폼 앱과 배너 ID 생성",
@@ -1268,9 +1149,7 @@
         {
           "id": "monetization.ad_end_to_end",
           "title": "요청·로드·표시 시도·표시 결과·보상·SSV와 실패 복구가 구분된다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -1284,11 +1163,7 @@
         {
           "id": "monetization.iap_products",
           "title": "마켓별 상품 ID, 유형, 가격, 현지화와 판매 상태가 앱 카탈로그와 일치한다",
-          "appliesTo": [
-            "google_play",
-            "app_store",
-            "apps_in_toss"
-          ],
+          "appliesTo": ["google_play", "app_store", "apps_in_toss"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1308,9 +1183,7 @@
         {
           "id": "monetization.purchase_verification",
           "title": "서버 검증, 중복 거래 방지, pending·ack와 exactly-once 정산이 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1330,9 +1203,7 @@
         {
           "id": "monetization.restore_refund",
           "title": "복원, 취소, 환불, 철회와 entitlement 재조정이 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1352,9 +1223,7 @@
         {
           "id": "monetization.revenue_signals",
           "title": "마켓·광고 콘솔 수익과 요청·노출·결제 신호의 조회 경로가 있다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "monthly",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1368,9 +1237,7 @@
         {
           "id": "monetization.legal_tax",
           "title": "가격, 세금, 정산 계정, 계약과 필요한 사업자 정보가 유효하다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "quarterly",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1384,9 +1251,7 @@
         {
           "id": "monetization.bm_profile_validated",
           "title": "수익화 프로필(bm-profile.json)이 프레임워크 strict 검증과 LTV 시뮬레이션을 통과했고 광고·IAP 코드와 원격 설정 기본값이 프로필과 일치한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1411,9 +1276,7 @@
         {
           "id": "policy.sdk_data_inventory",
           "title": "SDK, 권한, 수집·공유·보존 데이터 목록이 실제 바이너리와 일치한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -1427,9 +1290,7 @@
         {
           "id": "policy.public_pages",
           "title": "개인정보, 약관, 지원과 계정삭제 페이지가 공개 URL에서 200으로 읽힌다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "한영 개인정보처리방침 게시 완료",
@@ -1449,9 +1310,7 @@
         {
           "id": "policy.account_deletion_export",
           "title": "계정이 있으면 앱 안팎의 삭제·내보내기·보존 처리가 검증됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "계정 없음, 로컬 기록 삭제·수동 암호화 백업·PDF·CSV 제공",
@@ -1471,9 +1330,7 @@
         {
           "id": "policy.permissions",
           "title": "요청 권한, 사용 시점, 거부·재요청 흐름과 설명 문구가 일치한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "Android 자동 백업/기기 이전 차단, iOS 파일 보호, 불필요한 권한 제외",
@@ -1493,9 +1350,7 @@
         {
           "id": "policy.play_declarations",
           "title": "Play Data Safety, 앱 액세스, 광고, 대상 연령, 콘텐츠 등급과 국가 설정이 현재 앱과 맞다",
-          "appliesTo": [
-            "google_play"
-          ],
+          "appliesTo": ["google_play"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 필요",
@@ -1515,9 +1370,7 @@
         {
           "id": "policy.apple_declarations",
           "title": "App Privacy, age rating, ATT, export compliance, DSA와 콘텐츠 권리가 현재 앱과 맞다",
-          "appliesTo": [
-            "app_store"
-          ],
+          "appliesTo": ["app_store"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -1531,9 +1384,7 @@
         {
           "id": "policy.ait_declarations",
           "title": "AppsInToss 광고·결제·권한·금지 콘텐츠와 고객지원 선언이 현재 앱과 맞다",
-          "appliesTo": [
-            "apps_in_toss"
-          ],
+          "appliesTo": ["apps_in_toss"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1553,9 +1404,7 @@
         {
           "id": "policy.review_access",
           "title": "심사 연락처, 테스트 계정, 접근 단계와 특이사항이 안전하게 제공된다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "로그인·유료 기능 없음",
@@ -1575,9 +1424,7 @@
         {
           "id": "store.localized_metadata",
           "title": "앱 이름, 부제, 설명, 키워드, 카테고리와 기능 주장이 현지화됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1591,9 +1438,7 @@
         {
           "id": "store.visual_assets",
           "title": "아이콘·로고·feature graphic·thumbnail·스크린샷이 실제 UI와 규격에 맞다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1607,9 +1452,7 @@
         {
           "id": "store.release_notes",
           "title": "후보별 사용자용 릴리스 노트가 실제 변경과 일치한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1623,9 +1466,7 @@
         {
           "id": "store.availability",
           "title": "마켓별 가격, 국가, 기기 호환성과 배포 제외 근거가 콘솔에서 읽혔다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1644,9 +1485,7 @@
         {
           "id": "qa.test_matrix",
           "title": "자동·수동·실기기 테스트 항목, 담당자와 합격 기준이 정의됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "on_change",
           "status": "pass",
           "value": "코어·문서 단위 테스트 및 별도 가상 DB의 네이티브 검증",
@@ -1666,9 +1505,7 @@
         {
           "id": "qa.artifact_identity",
           "title": "동일 source SHA의 최종 artifact에서 패키지·번들·버전·서명과 포함 설정을 읽었다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1688,9 +1525,7 @@
         {
           "id": "qa.device_matrix",
           "title": "대상 플랫폼의 실제 설치 경로, 기기·OS·버전과 실행 결과가 기록됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -1704,9 +1539,7 @@
         {
           "id": "qa.critical_flow",
           "title": "cold start, 온보딩, 핵심 가치, 저장·복원과 종료·재실행 흐름이 통과했다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "시작/종료 저장, 재시작 후 진행 중 보존, 백업·내보내기",
@@ -1726,9 +1559,7 @@
         {
           "id": "qa.backend_identity",
           "title": "운영 유사 환경의 인증, App Check, API, 데이터 저장과 권한 실패 흐름이 통과했다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1748,9 +1579,7 @@
         {
           "id": "qa.monetization",
           "title": "해당 시 광고·결제·복원·환불과 미지원 마켓 동작을 실제 후보에서 확인했다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -1764,9 +1593,7 @@
         {
           "id": "qa.failure_states",
           "title": "오프라인, timeout, 빈 상태, 권한 거부, 서버 오류와 재시도 동작이 안전하다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "잘못된 암호와 손상 파일 거부, 기존 기록 보존",
@@ -1786,9 +1613,7 @@
         {
           "id": "qa.upgrade_migration",
           "title": "이전 공개 버전에서 업데이트할 때 저장·스키마·entitlement가 보존된다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1802,9 +1627,7 @@
         {
           "id": "qa.performance_accessibility",
           "title": "시작 시간, 메모리, 발열, 프레임, 크래시, safe area와 접근성 기준을 확인했다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
           "value": "검증 필요",
@@ -1818,9 +1641,7 @@
         {
           "id": "qa.telemetry",
           "title": "현재 후보의 핵심 분석·크래시·광고·결제 신호가 운영 조회 경로에 도착했다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "na",
           "value": "해당 없음",
@@ -1840,9 +1661,7 @@
         {
           "id": "qa.release_ledger",
           "title": "현재 후보의 market-launch-state.json이 생성되고 제품 원장과 연결됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pass",
           "value": "빌드/검증과 마켓 제출/공개 상태 분리",
@@ -1867,9 +1686,7 @@
         {
           "id": "operations.public_version",
           "title": "각 승인 마켓의 공개 페이지와 설치·업데이트 버전이 후보와 일치한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1883,9 +1700,7 @@
         {
           "id": "operations.live_smoke",
           "title": "공개 채널 설치 후 핵심 흐름과 백엔드·광고·결제 연결이 통과했다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1899,9 +1714,7 @@
         {
           "id": "operations.telemetry_health",
           "title": "공개 버전의 GA4·BigQuery·Crashlytics 신호와 데이터 지연이 확인된다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "monthly",
           "status": "na",
           "value": "해당 없음",
@@ -1921,9 +1734,7 @@
         {
           "id": "operations.product_metrics",
           "title": "DAU, 신규·재방문, 활성화, 잔존율과 핵심 반복 지표를 정해진 창으로 검토한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "monthly",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1937,9 +1748,7 @@
         {
           "id": "operations.revenue_metrics",
           "title": "광고 요청·노출·eCPM·수익과 결제·환불을 공급자 자료로 검토한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "monthly",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -1953,9 +1762,7 @@
         {
           "id": "operations.crash_performance",
           "title": "버전별 crash-free, ANR, 성능과 스토어 품질 신호를 검토한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "monthly",
           "status": "na",
           "value": "해당 없음",
@@ -1975,9 +1782,7 @@
         {
           "id": "operations.reviews_support",
           "title": "마켓 리뷰, 고객지원, 정책 알림과 반복 문제의 담당·기한이 있다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "monthly",
           "status": "pass",
           "value": "cs@seorilabs.com 및 공개 개인정보 연락처",
@@ -1997,9 +1802,7 @@
         {
           "id": "operations.incident_rollback",
           "title": "중단·롤백·Remote Config 차단·고객 공지 절차가 실제 권한과 연결됐다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "quarterly",
           "status": "pass",
           "value": "태그 고정, 저장 schema 변경 금지, 원본 보존·백업 안내",
@@ -2019,9 +1822,7 @@
         {
           "id": "operations.learning_windows",
           "title": "D1·D7·D28·D90에 지표, 정성 피드백과 데이터 한계를 검토한다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
@@ -2035,9 +1836,7 @@
         {
           "id": "operations.feedback_loop",
           "title": "확인된 학습이 knowledgeRegister와 다음 기획·개선 backlog로 연결된다",
-          "appliesTo": [
-            "all"
-          ],
+          "appliesTo": ["all"],
           "reviewCadence": "monthly",
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",

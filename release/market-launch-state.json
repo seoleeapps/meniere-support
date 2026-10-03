@@ -15,9 +15,7 @@
   },
   "deploymentApproval": {
     "status": "approved",
-    "markets": [
-      "google_play"
-    ],
+    "markets": ["google_play"],
     "objective": "public_live",
     "approvedAt": "2026-10-03T13:05:10.619344+00:00",
     "evidence": [
