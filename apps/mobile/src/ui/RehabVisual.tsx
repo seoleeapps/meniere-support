@@ -78,6 +78,8 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
   const radians = (angle * Math.PI) / 180;
   const headX = horizontal ? 105 : 86;
   const headY = horizontal ? 103 : 94;
+  const pivotX = horizontal ? 45 : 32;
+  const pivotY = horizontal ? 47 : 78;
   const eyes = horizontal
     ? [
         [32, 24],
@@ -85,8 +87,16 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
       ]
     : [[61, 34]];
   const gazeOrigins = eyes.map(([x, y]) => ({
-    x: headX + 45 + (x - 45) * Math.cos(radians) - (y - 45) * Math.sin(radians),
-    y: headY + 45 + (x - 45) * Math.sin(radians) + (y - 45) * Math.cos(radians),
+    x:
+      headX +
+      pivotX +
+      (x - pivotX) * Math.cos(radians) -
+      (y - pivotY) * Math.sin(radians),
+    y:
+      headY +
+      pivotY +
+      (x - pivotX) * Math.sin(radians) +
+      (y - pivotY) * Math.cos(radians),
   }));
   return (
     <>
@@ -156,8 +166,18 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
                     strokeWidth={3}
                   />
                   <Path
-                    d="M100 202 Q150 172 200 202 V223 H100 Z"
+                    d="M86 229 Q88 198 126 187 H174 Q212 198 214 229 Z"
                     fill={p.accent}
+                  />
+                  <Rect
+                    x={138}
+                    y={174}
+                    width={24}
+                    height={24}
+                    rx={4}
+                    fill={p.card}
+                    stroke={p.ink}
+                    strokeWidth={3}
                   />
                   <Path
                     d="M94 124 Q65 150 94 176 M85 123 L96 122 L94 135 M85 176 L96 178 L94 165 M206 124 Q235 150 206 176 M215 123 L204 122 L206 135 M215 176 L204 178 L206 165"
@@ -184,8 +204,18 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
                     strokeWidth={3}
                   />
                   <Path
-                    d="M105 190 Q133 181 154 199 L166 227 H101 Z"
+                    d="M65 229 Q72 196 104 185 H132 Q164 196 171 229 Z"
                     fill={p.accent}
+                  />
+                  <Rect
+                    x={108}
+                    y={169}
+                    width={24}
+                    height={27}
+                    rx={4}
+                    fill={p.card}
+                    stroke={p.ink}
+                    strokeWidth={3}
                   />
                   <Path
                     d="M178 97 Q203 130 178 163 M171 100 L178 90 L187 99 M171 160 L178 170 L187 161"
@@ -208,7 +238,7 @@ export function RehabDemo({ kind, t }: { kind: RehabKind; t: Translate }) {
                 />
               ))}
               <G
-                transform={`translate(${headX} ${headY}) rotate(${angle} 45 45)`}
+                transform={`translate(${headX} ${headY}) rotate(${angle} ${pivotX} ${pivotY})`}
               >
                 {horizontal ? (
                   <>
