@@ -33,7 +33,8 @@
     "quality": {
       "status": "pass",
       "evidence": [
-        "pnpm check: TypeScript, 33 core and 5 renderer tests, architecture and release metadata schema"
+        "pnpm check: TypeScript, 33 core and 5 renderer tests, architecture and release metadata schema",
+        "PR #4 squash merged f9423abd110e747f7e957b870d7ce7b39d11ace6; latest-head CI success; Copilot timestamp finding fixed and thread resolved."
       ],
       "checkedAt": "2026-10-03T13:05:10.619344+00:00",
       "blocker": null
@@ -104,14 +105,21 @@
         },
         "metadata": {
           "status": "pending",
-          "evidence": [],
-          "checkedAt": null,
+          "evidence": [
+            "play-store/assets-manifest.json: existing-logo 512px icon, 1024x500 real-screen feature, 5 actual Android screenshots at 1080x1920; visual inspection and exact size/background validation passed.",
+            "Listing config validation passed only with console gates and missing tablet images allowed. Images are local, not uploaded to Play."
+          ],
+          "checkedAt": "2026-10-03T13:38:19.927599+00:00",
           "blocker": null
         },
         "policy": {
           "status": "pending",
-          "evidence": [],
-          "checkedAt": null,
+          "evidence": [
+            "Live app 4975784705764720395: health, privacy URL, ads yes, access unrestricted, government no, financial none, 18+ target and AD_ID purposes saved. IARC questionnaire summary saved: ESRB Everyone, PEGI 3.",
+            "Google Play account policy requires Organization for Medical health services; current app contains declared disease-management and rehabilitation features. Existing personal-account applicability remains unconfirmed. No account conversion or regulatory certification is claimed.",
+            "play-store/policy/account-eligibility-question.md: support inquiry draft prepared; user permission to send pending. Clinician product review and country classification remain uncompleted."
+          ],
+          "checkedAt": "2026-10-03T13:38:19.927599+00:00",
           "blocker": null
         },
         "submission": {
