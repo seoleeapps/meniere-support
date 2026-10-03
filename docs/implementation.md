@@ -12,7 +12,7 @@
 
 ## 보관과 복구
 
-전체 기록을 SQLCipher DB의 단일 행으로 원자적으로 저장한다. 키는 기기별 32바이트 난수이며 SecureStore에 보관한다. iOS는 잠금 해제된 기기에서만 접근하고 다른 기기로 키를 이전하지 않는다. Android는 자동 클라우드 백업과 기기 이전에서 앱 데이터를 제외한다. iOS는 DB 디렉터리에 파일 보호 및 백업 제외 속성을 설정한다.
+전체 기록을 SQLCipher DB의 단일 행으로 원자적으로 저장한다. 데이터 형식 2에는 전정재활 계획과 수행 기록이 포함되며, 형식 1의 기존 설치·비밀번호 백업은 기록을 보존하는 일방향 변환 후 사용한다. 미래 형식은 거부한다. 키는 기기별 32바이트 난수이며 SecureStore에 보관한다. iOS는 잠금 해제된 기기에서만 접근하고 다른 기기로 키를 이전하지 않는다. Android는 자동 클라우드 백업과 기기 이전에서 앱 데이터를 제외한다. iOS는 DB 디렉터리에 파일 보호 및 백업 제외 속성을 설정한다.
 
 수동 백업은 12자 이상 비밀번호를 사용하는 별도 SQLCipher 파일이다. 가져오기 전에 별도 임시 파일에서 암호·무결성·버전·전체 데이터 형식을 확인한다. 기존 데이터는 미리보기 전까지 변경하지 않는다. 동일 기록은 중복 생성하지 않고 충돌은 기본적으로 기존 기록을 유지한다. 다른 기기의 화면 설정과 연락처는 덮어쓰지 않는다. 결합 후 데이터가 유효하지 않으면 저장하지 않는다.
 
@@ -22,7 +22,7 @@ PDF와 CSV는 암호화되지 않는다. 사용자가 공유 전에 범위를 �
 
 Google Play·AdMob 대상은 `wellknowngeek@gmail.com`이다. AdMob 로그인 이메일과 게시자 `pub-9932778305312246`을 콘솔에서 확인한 뒤 앱 두 개와 배너 두 개만 생성했다. 공개 ID 정본은 `release/admob.json`, 로컬 카탈로그는 `app/meniere-support/identity` 및 `app/meniere-support/admob/public-identifiers`다. 다른 앱 키와 Firebase 자원은 만들지 않았다.
 
-기본 개발·QA 빌드는 Google 샘플 광고 ID를 사용한다. `APP_VARIANT=production`일 때만 등록한 앱의 광고 ID를 사용한다. 건강 데이터·검색어·의료 관심사를 광고 요청에 넣지 않으며 비개인화 요청만 보낸다. 기록 입력, 도움, 진료, 진행 중 발작 및 내보내기 작업 중에는 배너를 숨긴다. 광고 동의 오류는 기록 사용을 차단하지 않는다. 실제 광고 게재는 별도의 UMP·AdMob 검토 조건이다.
+기본 개발·QA 빌드는 Google 샘플 광고 ID를 사용한다. `APP_VARIANT=production`일 때만 등록한 앱의 광고 ID를 사용한다. 건강 데이터·검색어·의료 관심사를 광고 요청에 넣지 않으며 비개인화 요청만 보낸다. 기록 입력, 전정재활, 도움, 진료, 진행 중 발작 및 내보내기 작업 중에는 배너를 숨긴다. 광고 동의 오류는 기록 사용을 차단하지 않는다. 실제 광고 게재는 별도의 UMP·AdMob 검토 조건이다.
 
 [개인정보처리방침 한국어](https://seorilabs.com/apps/meniere-support/privacy/) · [English](https://seorilabs.com/en/apps/meniere-support/privacy/) · 문의 `cs@seorilabs.com`.
 
@@ -41,3 +41,5 @@ Google Play·AdMob 대상은 `wellknowngeek@gmail.com`이다. AdMob 로그인 �
 - [Expo Android 권한 제외](https://docs.expo.dev/guides/permissions/)와 [화면 캡처 방지](https://docs.expo.dev/versions/latest/sdk/screen-capture/): 캡처 방지에 사진 접근 권한은 필요하지 않다.
 
 의료 도움 문구의 원 출처와 검토 한계는 `initial-plan.md`에 보존했다. 의료진 검수는 완료되지 않았다.
+
+전정재활의 동작과 의료 검수 범위는 [운동 프로그램](rehab-program.md)에 기록했다.

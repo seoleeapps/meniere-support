@@ -65,3 +65,36 @@ it("keeps the first page bounded and retains long questions in full", () => {
   expect(html).toContain("detail-5");
   expect(html).toContain("Full episode records follow.");
 });
+
+it("retains stopped exercise, discomfort and escaped plans without declaring improvement", () => {
+  const now = Date.parse("2026-10-03T00:00Z"),
+    j = emptyJournal();
+  j.rehabLogs.push({
+    id: "r1",
+    createdAt: now,
+    updatedAt: now,
+    date: "2026-10-03",
+    timeZone: "UTC",
+    occurredAt: now,
+    kind: "gaze_vertical",
+    plan: "<script>plan</script>",
+    targetSeconds: 30,
+    plannedRounds: 2,
+    completedRounds: 0,
+    durationSeconds: 7,
+    before: 2,
+    after: 4,
+    outcome: "stopped",
+    note: "stop-note",
+  });
+  const html = renderSummary(
+    summarize(j, "2026-10-03", "2026-10-03", now),
+    "en",
+  );
+  expect(html).toContain("Stopped");
+  expect(html).toContain("7 seconds exercised");
+  expect(html).toContain("2 → 4/10");
+  expect(html).toContain("stop-note");
+  expect(html).not.toContain("<script>");
+  expect(html).toContain("not an assessment of treatment effectiveness");
+});

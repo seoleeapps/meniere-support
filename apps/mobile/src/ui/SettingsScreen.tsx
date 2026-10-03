@@ -420,7 +420,9 @@ export function SettingsScreen({
           label={t("개인정보 안내", "Privacy information")}
           onPress={() =>
             void Linking.openURL(
-              "https://www.seorilabs.com/apps/meniere-support/privacy/",
+              s.language === "en"
+                ? "https://seorilabs.com/en/apps/meniere-support/privacy/"
+                : "https://seorilabs.com/apps/meniere-support/privacy/",
             ).catch(() =>
               Alert.alert(t("연결할 수 없습니다", "Unable to open link")),
             )

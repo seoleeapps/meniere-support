@@ -1,3 +1,4 @@
+import * as SQLite from "expo-sqlite";
 import { File } from "expo-file-system";
 import {
   beginEpisode,
@@ -6,6 +7,7 @@ import {
   mergeRestore,
   previewRestore,
   summarize,
+  localDate,
 } from "@meniere/product-core";
 import { EncryptedJournal, temporaryDirectory } from "./storage";
 import { documents } from "./documents";
@@ -81,6 +83,70 @@ export function installNativeQa() {
           mergeRestore(completed, imported, []).episodes[0].active === false,
           "restore-keeps-conflict-by-default",
         );
+        completed.rehabPlans.push({
+          id: "fictional-plan",
+          createdAt: now,
+          updatedAt: now,
+          kind: "gaze_horizontal",
+          instruction: "Fictional QA plan",
+          approved: true,
+        });
+        completed.rehabLogs.push({
+          id: "fictional-rehab",
+          createdAt: now,
+          updatedAt: now,
+          date: localDate(now, "Asia/Seoul"),
+          timeZone: "Asia/Seoul",
+          occurredAt: now,
+          kind: "gaze_horizontal",
+          plan: "Fictional QA plan",
+          targetSeconds: 15,
+          plannedRounds: 2,
+          completedRounds: 2,
+          durationSeconds: 30,
+          before: 2,
+          after: 3,
+          outcome: "done",
+          note: "Fictional exercise",
+        });
+        await repository.save(completed);
+        assert(
+          (await repository.load()).rehabLogs[0].durationSeconds === 30,
+          "encrypted-rehab-save-load",
+        );
+        const rehabUri = await repository.create(password);
+        assert(
+          (await repository.inspect(rehabUri, password)).rehabLogs[0].note ===
+            "Fictional exercise",
+          "rehab-password-backup-roundtrip",
+        );
+        const legacyFile = new File(temporaryDirectory, "fictional-v1.mjb");
+        await new File(rehabUri).copy(legacyFile);
+        const legacyDb = await SQLite.openDatabaseAsync(
+          legacyFile.name,
+          {},
+          temporaryDirectory.uri,
+        );
+        try {
+          await legacyDb.execAsync(`PRAGMA key='${password}';`);
+          const { rehabLogs, rehabPlans, ...rest } = completed;
+          await legacyDb.runAsync(
+            "UPDATE journal SET payload=? WHERE id=1",
+            JSON.stringify({ ...rest, schemaVersion: 1 }),
+          );
+          await legacyDb.execAsync("PRAGMA user_version=1");
+        } finally {
+          await legacyDb.closeAsync();
+        }
+        const upgraded = await repository.inspect(legacyFile.uri, password);
+        assert(
+          upgraded.schemaVersion === 2 &&
+            upgraded.episodes[0].note === completed.episodes[0].note &&
+            upgraded.rehabLogs.length === 0,
+          "v1-backup-upgrade-preserves-records",
+        );
+        legacyFile.delete();
+        new File(rehabUri).delete();
         const summary = summarize(
           completed,
           j.episodes[0].date,

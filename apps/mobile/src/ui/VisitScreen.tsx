@@ -7,6 +7,7 @@ import { clock, ids } from "../adapters/storage";
 import { documents, sharing } from "../adapters/documents";
 import { Button, Card, Copy, Field, Heading } from "./components";
 import { symptomName, timeName, translator } from "./labels";
+import { rehabName, rehabOutcome } from "./rehab-content";
 import type { ScreenProps } from "./screen-types";
 export function VisitScreen({ journal: j, busy, commit, run }: ScreenProps) {
   const t = translator(j.settings.language),
@@ -129,6 +130,20 @@ export function VisitScreen({ journal: j, busy, commit, run }: ScreenProps) {
               )}
             </Copy>
           </Card>
+          {summary.rehabLogs.length > 0 && (
+            <Card>
+              <Heading small>
+                {t("전정재활 수행", "Vestibular exercise sessions")}
+              </Heading>
+              {summary.rehabLogs.map((l) => (
+                <Copy key={l.id}>
+                  {l.date} · {rehabName(l.kind, t)} ·{" "}
+                  {rehabOutcome(l.outcome, t)} · {l.durationSeconds ?? "—"}{" "}
+                  {t("초", "sec")} · {l.completedRounds}/{l.plannedRounds}
+                </Copy>
+              ))}
+            </Card>
+          )}
           {summary.episodes.map((e) => (
             <Card key={e.id}>
               <Heading small>{e.date}</Heading>

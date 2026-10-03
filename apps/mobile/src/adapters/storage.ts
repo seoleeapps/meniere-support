@@ -6,6 +6,7 @@ import { requireNativeModule } from "expo-modules-core";
 import { Platform } from "react-native";
 import {
   emptyJournal,
+  migrateJournal,
   validateJournal,
   type Journal,
   type JournalPort,
@@ -86,9 +87,9 @@ export class EncryptedJournal implements JournalPort, BackupPort {
       const version = await db.getFirstAsync<{ user_version: number }>(
         "PRAGMA user_version",
       );
-      if ((version?.user_version ?? 0) > 1) throw new Error("NEWER_DATABASE");
+      if ((version?.user_version ?? 0) > 2) throw new Error("NEWER_DATABASE");
       await db.execAsync(
-        "PRAGMA journal_mode = WAL; PRAGMA secure_delete = ON; CREATE TABLE IF NOT EXISTS journal (id INTEGER PRIMARY KEY CHECK(id = 1), payload TEXT NOT NULL); PRAGMA user_version = 1;",
+        "PRAGMA journal_mode = WAL; PRAGMA secure_delete = ON; CREATE TABLE IF NOT EXISTS journal (id INTEGER PRIMARY KEY CHECK(id = 1), payload TEXT NOT NULL); PRAGMA user_version = 2;",
       );
       this.db = db;
       return db;
@@ -103,8 +104,12 @@ export class EncryptedJournal implements JournalPort, BackupPort {
       "SELECT payload FROM journal WHERE id = 1",
     );
     if (!row) return emptyJournal(this.language);
-    const journal: unknown = JSON.parse(row.payload);
-    validateJournal(journal);
+    const raw: unknown = JSON.parse(row.payload);
+    const journal = migrateJournal(raw);
+    if (
+      (raw as { schemaVersion: number }).schemaVersion !== journal.schemaVersion
+    )
+      await this.save(journal);
     return journal;
   }
   async save(journal: Journal): Promise<void> {
@@ -143,7 +148,7 @@ export class EncryptedJournal implements JournalPort, BackupPort {
       );
       attached = true;
       await db.getFirstAsync("SELECT sqlcipher_export('manual_backup')");
-      await db.execAsync("PRAGMA manual_backup.user_version = 1");
+      await db.execAsync("PRAGMA manual_backup.user_version = 2");
       await db.execAsync("DETACH DATABASE manual_backup");
       attached = false;
       return file.uri;
@@ -175,15 +180,19 @@ export class EncryptedJournal implements JournalPort, BackupPort {
       const version = await db.getFirstAsync<{ user_version: number }>(
         "PRAGMA user_version",
       );
-      if (version?.user_version !== 1)
+      if (![1, 2].includes(version?.user_version ?? 0))
         throw new Error("BACKUP_VERSION_INVALID");
       const row = await db.getFirstAsync<{ payload: string }>(
         "SELECT payload FROM journal WHERE id = 1",
       );
       if (!row) throw new Error("BACKUP_RECORDS_MISSING");
-      const journal: unknown = JSON.parse(row.payload);
-      validateJournal(journal);
-      return journal;
+      const raw: unknown = JSON.parse(row.payload);
+      if (
+        (raw as { schemaVersion: number }).schemaVersion !==
+        version?.user_version
+      )
+        throw new Error("BACKUP_VERSION_INVALID");
+      return migrateJournal(raw);
     } finally {
       await db.closeAsync();
       if (file.exists) file.delete();

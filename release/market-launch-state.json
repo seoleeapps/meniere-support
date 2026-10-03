@@ -27,12 +27,12 @@
     {
       "id": "medical_wording",
       "status": "blocked",
-      "reason": "기획서가 요구한 이비인후과 의료진 문구 검토 미완료"
+      "reason": "기획서가 요구한 이비인후과·전정재활 담당 의료진의 문구·시선 안정화 프로그램 검토 미완료"
     },
     {
       "id": "country_policy",
       "status": "blocked",
-      "reason": "전 세계 배포 국가별 의료·개인정보·광고 동의 검토 필요"
+      "reason": "시각 운동 도구 기능의 국가별 의료기기 분류·의료·개인정보·광고 동의 검토 필요"
     },
     {
       "id": "ios_device",

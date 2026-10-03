@@ -15,7 +15,8 @@ export function HabitScreen({
   busy,
   commit,
   onEditingChange,
-}: ScreenProps) {
+  onOpenRehab,
+}: ScreenProps & { onOpenRehab: () => void }) {
   const t = translator(j.settings.language),
     today = localDate(clock.now(), clock.timeZone());
   const [sleepText, setSleepText] = useState("");
@@ -190,6 +191,11 @@ export function HabitScreen({
   return (
     <>
       <Heading>{t("나에게 맞는 생활", "Habits that fit you")}</Heading>
+      <Button
+        secondary
+        label={t("전정재활 운동 프로그램", "Vestibular exercise program")}
+        onPress={onOpenRehab}
+      />
       <Copy muted>
         {t(
           "기록은 평가가 아닙니다. 편한 항목만 골라 주세요.",

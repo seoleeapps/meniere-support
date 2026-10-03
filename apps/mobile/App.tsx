@@ -57,6 +57,7 @@ import {
   PaletteContext,
 } from "./src/ui/components";
 import { EpisodeEditor } from "./src/ui/EpisodeEditor";
+import { RehabScreen } from "./src/ui/RehabScreen";
 import { HabitScreen } from "./src/ui/HabitScreen";
 import { VisitScreen } from "./src/ui/VisitScreen";
 import { SettingsScreen } from "./src/ui/SettingsScreen";
@@ -64,7 +65,14 @@ import { symptomName, timeName, translator } from "./src/ui/labels";
 
 if (__DEV__) require("./src/adapters/native-qa").installNativeQa();
 void SplashScreen.preventAutoHideAsync();
-type Tab = "home" | "history" | "habits" | "visit" | "settings" | "help";
+type Tab =
+  | "home"
+  | "history"
+  | "habits"
+  | "visit"
+  | "settings"
+  | "help"
+  | "rehab";
 const locale =
   Localization.getLocales()[0]?.languageCode === "ko" ? "ko" : "en";
 const repository = new EncryptedJournal(locale);
@@ -84,11 +92,13 @@ function JournalApp() {
     [adsReady, setAdsReady] = useState(false),
     [fieldFocused, setFieldFocused] = useState(false),
     [formActive, setFormActive] = useState(false),
+    [rehabTargetActive, setRehabTargetActive] = useState(false),
     [consentRevision, setConsentRevision] = useState(0),
     [bannerFailed, setBannerFailed] = useState(false),
     [foreground, setForeground] = useState(true),
     [dayDate, setDayDate] = useState(localDate(clock.now(), clock.timeZone())),
     [dayEditor, setDayEditor] = useState(false);
+  const scroll = useRef<ScrollView>(null);
   const locked = useRef(false),
     consentRequested = useRef(false),
     scheme = useColorScheme();
@@ -415,8 +425,8 @@ function JournalApp() {
         <Card>
           <Copy>
             {t(
-              "증상과 생활 습관을 기록하고 진료에서 이야기할 내용을 준비합니다. 진단이나 치료를 제공하지 않습니다.",
-              "Record symptoms and habits, and prepare for your next visit. This app does not provide diagnosis or treatment.",
+              "증상·생활 습관과 운동 수행을 기록하고 진료를 준비합니다. 의료진의 진료나 개인별 운동 처방을 대신하지 않습니다.",
+              "Record symptoms, habits and exercise sessions, and prepare for your next visit. This app does not replace clinical care or a personal exercise prescription.",
             )}
           </Copy>
           <Copy>
@@ -681,6 +691,22 @@ function JournalApp() {
         </Card>
         <Card>
           <Heading small>
+            {t("전정재활 운동", "Vestibular rehabilitation")}
+          </Heading>
+          <Copy>
+            {t(
+              "고정 표적과 타이머로 시선 안정화를 연습하고 수행을 기록합니다.",
+              "Practice gaze stability with a fixed target and timer, and record your sessions.",
+            )}
+          </Copy>
+          <Button
+            secondary
+            label={t("운동 프로그램", "Exercise program")}
+            onPress={() => changeTab("rehab")}
+          />
+        </Card>
+        <Card>
+          <Heading small>
             {t("다음 진료에 가져가세요", "Bring it to your next visit")}
           </Heading>
           <Copy>
@@ -761,7 +787,22 @@ function JournalApp() {
           ))}
       </>
     );
-  } else if (tab === "habits") content = <HabitScreen {...props!} />;
+  } else if (tab === "rehab")
+    content = (
+      <RehabScreen
+        {...props!}
+        onBack={() => changeTab("home")}
+        onHelp={() => changeTab("help")}
+        onTargetActive={setRehabTargetActive}
+        onScrollToTop={() =>
+          scroll.current?.scrollTo({ y: 0, animated: false })
+        }
+      />
+    );
+  else if (tab === "habits")
+    content = (
+      <HabitScreen {...props!} onOpenRehab={() => changeTab("rehab")} />
+    );
   else if (tab === "visit") content = <VisitScreen {...props!} />;
   else if (tab === "settings")
     content = (
@@ -854,6 +895,8 @@ function JournalApp() {
             </View>
           )}
           <ScrollView
+            ref={scroll}
+            scrollEnabled={!rehabTargetActive}
             key={`${tab}-${episode?.id ?? ""}-${dayEditor}-${journal?.settings.onboarded}`}
             contentContainerStyle={layout.content}
             keyboardShouldPersistTaps="handled"
@@ -894,7 +937,7 @@ function JournalApp() {
               />
             </View>
           )}
-          {journal?.settings.onboarded && (
+          {journal?.settings.onboarded && !(tab === "rehab" && formActive) && (
             <View
               style={{
                 flexDirection: "row",
@@ -911,7 +954,7 @@ function JournalApp() {
                   key={value}
                   accessibilityRole="tab"
                   accessibilityState={{ selected: tab === value }}
-                  disabled={busy}
+                  disabled={busy || (tab === "rehab" && formActive)}
                   onPress={() => changeTab(value)}
                   style={{
                     flexGrow: 1,

@@ -206,7 +206,7 @@ describe("safe restoration", () => {
   it.each([
     null,
     {},
-    { schemaVersion: 2 },
+    { schemaVersion: 3 },
     { ...emptyJournal(), episodes: [{}] },
   ])("rejects damaged or unsupported payloads", (input) =>
     expect(() => validateJournal(input)).toThrow(),

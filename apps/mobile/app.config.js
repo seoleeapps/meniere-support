@@ -49,7 +49,6 @@ module.exports = {
       "android.permission.WRITE_EXTERNAL_STORAGE",
       "android.permission.READ_MEDIA_IMAGES",
       "android.permission.READ_MEDIA_VIDEO",
-      "android.permission.DETECT_SCREEN_CAPTURE",
       "android.permission.SYSTEM_ALERT_WINDOW",
       "android.permission.USE_BIOMETRIC",
       "android.permission.USE_FINGERPRINT",

@@ -67,8 +67,34 @@ export interface Settings {
   emergencyPhone: string;
   reminder: { enabled: boolean; hour: number; minute: number; paused: boolean };
 }
+export type RehabKind =
+  | "gaze_horizontal"
+  | "gaze_vertical"
+  | "balance_supported";
+export interface RehabPlan extends Entity {
+  kind: RehabKind;
+  instruction: string;
+  approved: boolean;
+}
+export interface RehabLog extends Entity {
+  date: string;
+  timeZone: string;
+  occurredAt: number;
+  kind: RehabKind;
+  plan: string;
+  targetSeconds: number;
+  plannedRounds: number;
+  completedRounds: number;
+  durationSeconds: number | null;
+  before: number | null;
+  after: number | null;
+  outcome: "done" | "stopped" | "unfinished";
+  note: string;
+}
 export interface Journal {
-  schemaVersion: 1;
+  schemaVersion: 2;
+  rehabPlans: RehabPlan[];
+  rehabLogs: RehabLog[];
   episodes: Episode[];
   days: Day[];
   habits: Habit[];
@@ -111,7 +137,9 @@ export interface AdsPort {
 
 export function emptyJournal(language: Language = "en"): Journal {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
+    rehabPlans: [],
+    rehabLogs: [],
     episodes: [],
     days: [],
     habits: [],
@@ -239,8 +267,16 @@ function checkTime(t: TimeValue) {
 }
 export function validateJournal(input: unknown): asserts input is Journal {
   const j = input as Journal;
-  assert(j && j.schemaVersion === 1);
-  const collections = [j.episodes, j.days, j.habits, j.habitLogs, j.visits];
+  assert(j && j.schemaVersion === 2);
+  const collections = [
+    j.episodes,
+    j.days,
+    j.habits,
+    j.habitLogs,
+    j.visits,
+    j.rehabPlans,
+    j.rehabLogs,
+  ];
   const ids = new Set<string>();
   for (const collection of collections) {
     assert(Array.isArray(collection) && collection.length <= 100000);
@@ -340,6 +376,63 @@ export function validateJournal(input: unknown): asserts input is Journal {
         v.questions.every((q) => text(q, 2000)) &&
         text(v.note),
     );
+  const kinds = ["gaze_horizontal", "gaze_vertical", "balance_supported"];
+  assert(new Set(j.rehabPlans.map((p) => p.kind)).size === j.rehabPlans.length);
+  for (const p of j.rehabPlans)
+    assert(
+      oneOf(p.kind, kinds) &&
+        text(p.instruction, 2000) &&
+        typeof p.approved === "boolean",
+    );
+  for (const l of j.rehabLogs) {
+    assert(
+      oneOf(l.kind, kinds) &&
+        validDate(l.date) &&
+        text(l.timeZone, 100) &&
+        finiteTime(l.occurredAt),
+    );
+    try {
+      assert(localDate(l.occurredAt, l.timeZone) === l.date);
+    } catch {
+      throw new Error("INVALID_RECORD");
+    }
+    assert(
+      text(l.plan, 2000) &&
+        text(l.note) &&
+        oneOf(l.outcome, ["done", "stopped", "unfinished"]),
+    );
+    assert(
+      Number.isInteger(l.targetSeconds) &&
+        l.targetSeconds >= 5 &&
+        l.targetSeconds <= 120,
+    );
+    assert(
+      Number.isInteger(l.plannedRounds) &&
+        l.plannedRounds >= 1 &&
+        l.plannedRounds <= 5,
+    );
+    assert(
+      Number.isInteger(l.completedRounds) &&
+        l.completedRounds >= 0 &&
+        l.completedRounds <= l.plannedRounds,
+    );
+    assert(
+      l.durationSeconds === null ||
+        (Number.isInteger(l.durationSeconds) &&
+          l.durationSeconds >= 0 &&
+          l.durationSeconds <= l.targetSeconds * l.plannedRounds),
+    );
+    assert(
+      l.outcome !== "done" ||
+        (l.completedRounds === l.plannedRounds &&
+          l.durationSeconds === l.targetSeconds * l.plannedRounds),
+    );
+    for (const rating of [l.before, l.after])
+      assert(
+        rating === null ||
+          (Number.isInteger(rating) && rating >= 0 && rating <= 10),
+      );
+  }
   const s = j.settings;
   assert(
     s &&
@@ -386,6 +479,7 @@ export interface Summary {
   majorImpactDays: number;
   episodes: (Episode & { crossesBoundary: boolean })[];
   habitLogs: HabitLog[];
+  rehabLogs: RehabLog[];
   questions: string[];
 }
 export function summarize(
@@ -449,6 +543,7 @@ export function summarize(
     ).size,
     episodes,
     habitLogs: j.habitLogs.filter((l) => inRange(l.date)),
+    rehabLogs: j.rehabLogs.filter((l) => inRange(l.date)),
     questions,
   };
 }
@@ -461,8 +556,17 @@ function canonical(value: unknown): string {
       .join(",")}}`;
   return JSON.stringify(value);
 }
-type Collection = "episodes" | "days" | "habits" | "habitLogs" | "visits";
+type Collection =
+  | "episodes"
+  | "days"
+  | "habits"
+  | "habitLogs"
+  | "visits"
+  | "rehabPlans"
+  | "rehabLogs";
 const collectionNames: Collection[] = [
+  "rehabPlans",
+  "rehabLogs",
   "episodes",
   "days",
   "habits",
@@ -477,6 +581,7 @@ export interface RestorePreview {
   to: string | null;
 }
 function logicalKey(collection: Collection, entity: Entity): string {
+  if (collection === "rehabPlans") return (entity as RehabPlan).kind;
   if (collection === "days") return (entity as Day).date;
   if (collection === "habitLogs") {
     const l = entity as HabitLog;
@@ -512,6 +617,7 @@ export function previewRestore(
     ...incoming.days,
     ...incoming.habitLogs,
     ...incoming.visits,
+    ...incoming.rehabLogs,
   ]
     .map((e) => e.date)
     .sort();
@@ -560,4 +666,83 @@ export function csvExport(j: Journal): string {
         JSON.stringify(e),
       ]);
   return "\uFEFF" + rows.map((row) => row.map(cell).join(",")).join("\r\n");
+}
+
+/** One-way upgrade for existing installations and password backups. */
+export function migrateJournal(input: unknown): Journal {
+  const raw = input as Journal;
+  const next =
+    raw?.schemaVersion === (1 as number)
+      ? { ...raw, schemaVersion: 2 as const, rehabPlans: [], rehabLogs: [] }
+      : raw;
+  validateJournal(next);
+  return next;
+}
+export function canStartRehab(
+  j: Journal,
+  kind: RehabKind,
+  acuteSymptoms: boolean,
+): boolean {
+  return (
+    !acuteSymptoms &&
+    !j.episodes.some((e) => e.active) &&
+    j.rehabPlans.some((p) => p.kind === kind && p.approved)
+  );
+}
+export interface ExerciseProgram {
+  phase: "exercise" | "paused" | "rest" | "complete";
+  targetSeconds: number;
+  plannedRounds: number;
+  completedRounds: number;
+  remainingSeconds: number;
+  elapsedSeconds: number;
+}
+export function startProgram(
+  targetSeconds: number,
+  plannedRounds: number,
+): ExerciseProgram {
+  if (
+    !Number.isInteger(targetSeconds) ||
+    targetSeconds < 5 ||
+    targetSeconds > 120 ||
+    !Number.isInteger(plannedRounds) ||
+    plannedRounds < 1 ||
+    plannedRounds > 5
+  )
+    throw new Error("INVALID_PROGRAM");
+  return {
+    phase: "exercise",
+    targetSeconds,
+    plannedRounds,
+    completedRounds: 0,
+    remainingSeconds: targetSeconds,
+    elapsedSeconds: 0,
+  };
+}
+export function advanceProgram(
+  p: ExerciseProgram,
+  seconds: number,
+): ExerciseProgram {
+  if (!Number.isInteger(seconds) || seconds < 0)
+    throw new Error("INVALID_PROGRAM");
+  if (p.phase !== "exercise") return p;
+  const elapsed = Math.min(seconds, p.remainingSeconds),
+    remainingSeconds = p.remainingSeconds - elapsed;
+  const completedRounds = p.completedRounds + (remainingSeconds === 0 ? 1 : 0);
+  return {
+    ...p,
+    remainingSeconds,
+    completedRounds,
+    elapsedSeconds: p.elapsedSeconds + elapsed,
+    phase:
+      remainingSeconds === 0
+        ? completedRounds === p.plannedRounds
+          ? "complete"
+          : "rest"
+        : "exercise",
+  };
+}
+export function nextProgramRound(p: ExerciseProgram): ExerciseProgram {
+  if (p.phase !== "rest") throw new Error("INVALID_PROGRAM");
+  return { ...p, phase: "exercise", remainingSeconds: p.targetSeconds };
 }
