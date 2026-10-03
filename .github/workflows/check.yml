@@ -1,0 +1,21 @@
+name: 제품 검증
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24.16.0"
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm --dir apps/mobile exec expo install --check
+      - run: pnpm --dir apps/mobile exec expo export --platform android --output-dir ../../artifacts/bundle

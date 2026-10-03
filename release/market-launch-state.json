@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "appId": "meniere-support",
+  "version": "0.1.0",
+  "candidateCommit": null,
+  "updatedAt": "2026-10-03T05:26:44Z",
+  "state": "qa",
+  "authorization": "docs/approved-contract.md",
+  "markets": {
+    "google_play": {
+      "accountEmail": "wellknowngeek@gmail.com",
+      "developerId": "5547060480954653351",
+      "artifact": "Android debug / QA APK",
+      "uploaded": false,
+      "submitted": false,
+      "public": false
+    },
+    "app_store": {
+      "teamId": "HCDUXX4Z3X",
+      "artifact": "iOS simulator .app",
+      "uploaded": false,
+      "submitted": false,
+      "public": false
+    }
+  },
+  "gates": [
+    {
+      "id": "medical_wording",
+      "status": "blocked",
+      "reason": "기획서가 요구한 이비인후과 의료진 문구 검토 미완료"
+    },
+    {
+      "id": "country_policy",
+      "status": "blocked",
+      "reason": "전 세계 배포 국가별 의료·개인정보·광고 동의 검토 필요"
+    },
+    {
+      "id": "ios_device",
+      "status": "pending",
+      "reason": "실제 iPhone 검증 필요, 시뮬레이터와 별도"
+    },
+    {
+      "id": "store_declarations",
+      "status": "pending",
+      "reason": "건강 앱·Data safety·App Privacy·암호화 규정 검토 필요"
+    },
+    {
+      "id": "admob_readiness",
+      "status": "pending",
+      "reason": "스토어 앱 연결·AdMob 검토·UMP 메시지 및 동의 검증 필요"
+    },
+    {
+      "id": "store_assets",
+      "status": "pending",
+      "reason": "사람 테스트 후 스토어 스크린샷 및 등록 이미지 제작"
+    },
+    {
+      "id": "release_signing",
+      "status": "pending",
+      "reason": "전용 Play 업로드 키와 iOS 배포 서명·앱 등록 필요"
+    }
+  ]
+}

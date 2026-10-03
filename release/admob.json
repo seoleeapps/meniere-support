@@ -1,0 +1,16 @@
+{
+  "accountEmail": "wellknowngeek@gmail.com",
+  "publisherId": "pub-9932778305312246",
+  "verifiedAt": "2026-10-03",
+  "android": {
+    "appId": "ca-app-pub-9932778305312246~4130423403",
+    "bannerId": "ca-app-pub-9932778305312246/7710575763"
+  },
+  "ios": {
+    "appId": "ca-app-pub-9932778305312246~2458249085",
+    "bannerId": "ca-app-pub-9932778305312246/5251758379"
+  },
+  "format": "banner",
+  "storeVerification": "pending",
+  "umpMessages": "pending"
+}
