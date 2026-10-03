@@ -1,63 +1,150 @@
 {
   "schemaVersion": 1,
-  "appId": "meniere-support",
-  "version": "0.1.0",
-  "candidateCommit": null,
-  "updatedAt": "2026-10-03T05:26:44Z",
-  "state": "qa",
-  "authorization": "docs/approved-contract.md",
-  "markets": {
-    "google_play": {
-      "accountEmail": "wellknowngeek@gmail.com",
-      "developerId": "5547060480954653351",
-      "artifact": "Android debug / QA APK",
-      "uploaded": false,
-      "submitted": false,
-      "public": false
+  "app": {
+    "name": "Meniere Journal",
+    "repo": "seoleeapps/meniere-support",
+    "sourceRevision": "87d5c6432b4ba9e133a84cbbe1a90e7231327208"
+  },
+  "release": {
+    "version": "0.1.0",
+    "tag": "v0.1.0",
+    "objective": "public_live",
+    "countries": [],
+    "rolloutMode": "full_after_review",
+    "tagCreated": false
+  },
+  "deploymentApproval": {
+    "status": "approved",
+    "markets": ["google_play"],
+    "objective": "public_live",
+    "approvedAt": "2026-10-03T13:05:10.619344+00:00",
+    "evidence": [
+      "2026-10-03 user: 안드로이드 출시까지 진행해. legacy-admob 프로필로",
+      "docs/approved-contract.md"
+    ]
+  },
+  "commonGates": {
+    "candidate": {
+      "status": "pending",
+      "evidence": [],
+      "checkedAt": null,
+      "blocker": null
     },
-    "app_store": {
-      "teamId": "HCDUXX4Z3X",
-      "artifact": "iOS simulator .app",
-      "uploaded": false,
-      "submitted": false,
-      "public": false
+    "quality": {
+      "status": "pass",
+      "evidence": [
+        "pnpm check: TypeScript, 33 core and 5 renderer tests, architecture and release metadata schema"
+      ],
+      "checkedAt": "2026-10-03T13:05:10.619344+00:00",
+      "blocker": null
+    },
+    "production_dependencies": {
+      "status": "pending",
+      "evidence": [],
+      "checkedAt": null,
+      "blocker": null
+    },
+    "observability": {
+      "status": "na",
+      "evidence": [
+        "docs/approved-contract.md: no remote analytics or Crashlytics; encrypted offline health records. Device logs and Play vitals remain separate from remote product analytics."
+      ],
+      "checkedAt": "2026-10-03T13:05:10.619344+00:00",
+      "blocker": null
     }
   },
-  "gates": [
-    {
-      "id": "medical_wording",
-      "status": "blocked",
-      "reason": "기획서가 요구한 이비인후과·전정재활 담당 의료진의 문구·시선 안정화 프로그램 검토 미완료"
-    },
-    {
-      "id": "country_policy",
-      "status": "blocked",
-      "reason": "시각 운동 도구 기능의 국가별 의료기기 분류·의료·개인정보·광고 동의 검토 필요"
-    },
-    {
-      "id": "ios_device",
-      "status": "pending",
-      "reason": "실제 iPhone 검증 필요, 시뮬레이터와 별도"
-    },
-    {
-      "id": "store_declarations",
-      "status": "pending",
-      "reason": "건강 앱·Data safety·App Privacy·암호화 규정 검토 필요"
-    },
-    {
-      "id": "admob_readiness",
-      "status": "pending",
-      "reason": "스토어 앱 연결·AdMob 검토·UMP 메시지 및 동의 검증 필요"
-    },
-    {
-      "id": "store_assets",
-      "status": "pending",
-      "reason": "사람 테스트 후 스토어 스크린샷 및 등록 이미지 제작"
-    },
-    {
-      "id": "release_signing",
-      "status": "pending",
-      "reason": "전용 Play 업로드 키와 iOS 배포 서명·앱 등록 필요"
+  "markets": {
+    "google_play": {
+      "objective": "public_live",
+      "state": "pending",
+      "identity": {
+        "applicationId": "com.seoleeapps.menieresupport",
+        "version": "0.1.0",
+        "build": "1",
+        "developerAccountId": "5547060480954653351",
+        "developerAccountType": "personal",
+        "profile": "legacy-admob",
+        "appConsoleId": "4975784705764720395"
+      },
+      "gates": {
+        "candidate": {
+          "status": "pending",
+          "evidence": [],
+          "checkedAt": null,
+          "blocker": null
+        },
+        "artifact": {
+          "status": "pass",
+          "evidence": [
+            "artifacts/Meniere-Journal-0.1.0-production.aab SHA256 25d7d9c1276f4af6289e2bcb0b064509d539e57fb3c7bd44964d019c34f7292f",
+            "bundletool 1.18.3 validate and jarsigner verify passed; package com.seoleeapps.menieresupport 0.1.0/1, minSdk 24, targetSdk 36, production AdMob Android app ID",
+            "Upload certificate SHA256 8D:C5:73:FB:D9:5C:BF:52:07:F0:8B:43:70:6D:8B:70:B7:B3:50:EF:EA:07:B6:0B:27:5D:59:12:49:21:AB:E9; local and BeeStation restore checks passed",
+            "Source branch candidate has not been frozen or tagged. Artifact validation does not prove Play processing or installed-candidate QA."
+          ],
+          "checkedAt": "2026-10-03T13:05:10.619344+00:00",
+          "blocker": null
+        },
+        "upload": {
+          "status": "pending",
+          "evidence": [],
+          "checkedAt": null,
+          "blocker": null
+        },
+        "processing": {
+          "status": "pending",
+          "evidence": [],
+          "checkedAt": null,
+          "blocker": null
+        },
+        "qa": {
+          "status": "pending",
+          "evidence": [],
+          "checkedAt": null,
+          "blocker": null
+        },
+        "metadata": {
+          "status": "pending",
+          "evidence": [],
+          "checkedAt": null,
+          "blocker": null
+        },
+        "policy": {
+          "status": "pending",
+          "evidence": [],
+          "checkedAt": null,
+          "blocker": null
+        },
+        "submission": {
+          "status": "pending",
+          "evidence": [],
+          "checkedAt": null,
+          "blocker": null
+        },
+        "approval": {
+          "status": "pending",
+          "evidence": [],
+          "checkedAt": null,
+          "blocker": null
+        },
+        "release": {
+          "status": "pending",
+          "evidence": [],
+          "checkedAt": null,
+          "blocker": null
+        },
+        "live_smoke": {
+          "status": "pending",
+          "evidence": [],
+          "checkedAt": null,
+          "blocker": null
+        }
+      }
     }
+  },
+  "notes": [
+    "This replaces the original QA-only custom ledger. Its source, incomplete clinician review, country classification, UMP, policy declarations and store assets remain preserved in repository history and docs/qa.md.",
+    "Public objective remains approved. User clarified a personal record and previously learned exercise support tool, not a medical-device or clinical-service launch.",
+    "Personal account allowed app creation and truthful health-feature declaration save. No final review has occurred; do not infer public eligibility from form save.",
+    "Candidate freeze, Play-installed QA, policy/metadata readiness and country selection are still pending."
   ]
 }

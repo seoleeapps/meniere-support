@@ -78,6 +78,7 @@ module.exports = {
       },
     ],
     "./plugins/withPrivacy",
+    ...(production ? ["./plugins/withAndroidSigning"] : []),
   ],
   extra: { production },
 };

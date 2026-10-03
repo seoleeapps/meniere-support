@@ -11,7 +11,7 @@
   },
   "ledger": {
     "createdAt": "2026-10-03T04:46:14Z",
-    "updatedAt": "2026-10-03T06:46:35Z",
+    "updatedAt": "2026-10-03T13:05:10.619344+00:00",
     "currentReleaseLedger": "release/market-launch-state.json"
   },
   "sections": {
@@ -201,14 +201,20 @@
           "title": "Android package name과 실제 Play 앱 소유권이 일치한다",
           "appliesTo": ["google_play"],
           "reviewCadence": "on_change",
-          "status": "blocked",
+          "status": "pass",
           "value": "검증 필요",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": "2026-10-03T05:26:44Z",
+          "evidence": [
+            {
+              "kind": "console",
+              "ref": "Play appConsoleId 4975784705764720395 and production AAB package com.seoleeapps.menieresupport",
+              "observedAt": "2026-10-03T13:05:10.619344+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-03T13:05:10.619344+00:00",
           "reviewBy": null,
-          "blocker": "package 확정, Play 앱 셸 소유권은 아직 콘솔 확인 전",
-          "notes": null
+          "blocker": null,
+          "notes": "Draft app created; package-name availability confirmed. No public release."
         },
         {
           "id": "identity.ios_bundle",
@@ -249,14 +255,20 @@
           "title": "Google Play 개발자 계정 이름, 유형, ID와 앱 소유권을 확인했다",
           "appliesTo": ["google_play"],
           "reviewCadence": "per_release",
-          "status": "blocked",
+          "status": "pass",
           "value": "검증 필요",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": "2026-10-03T05:26:44Z",
+          "evidence": [
+            {
+              "kind": "console",
+              "ref": "Signed-in Play console: wellknowngeek@gmail.com / Seolee Apps / personal / 5547060480954653351",
+              "observedAt": "2026-10-03T13:05:10.619344+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-03T13:05:10.619344+00:00",
           "reviewBy": null,
-          "blocker": "wellknowngeek 계정 지정, Play Console live 개발자 정보 확인 필요",
-          "notes": null
+          "blocker": null,
+          "notes": "Identity verified, not final health-category eligibility. Account type was not changed."
         },
         {
           "id": "identity.apple_account",
@@ -485,11 +497,17 @@
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": null,
+          "evidence": [
+            {
+              "kind": "repo",
+              "ref": "pnpm check passed locally: 33 core + 5 renderer tests; architecture and metadata checks",
+              "observedAt": "2026-10-03T13:05:10.619344+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-03T13:05:10.619344+00:00",
           "reviewBy": null,
           "blocker": null,
-          "notes": null
+          "notes": "Current release preparation PR CI still pending."
         },
         {
           "id": "engineering.release_pipeline",
@@ -1334,14 +1352,20 @@
           "title": "Play Data Safety, 앱 액세스, 광고, 대상 연령, 콘텐츠 등급과 국가 설정이 현재 앱과 맞다",
           "appliesTo": ["google_play"],
           "reviewCadence": "per_release",
-          "status": "blocked",
+          "status": "pending",
           "value": "검증 필요",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": "2026-10-03T05:26:44Z",
+          "evidence": [
+            {
+              "kind": "console",
+              "ref": "Health declaration saved and reread: activity, nutrition, sleep, conditions, education, rehabilitation; medical-device unchecked",
+              "observedAt": "2026-10-03T13:05:10.619344+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-03T13:05:10.619344+00:00",
           "reviewBy": null,
-          "blocker": "건강 앱 및 Data safety/IARC 최종 선언 미완료",
-          "notes": null
+          "blocker": null,
+          "notes": "Other declarations and review are pending. Organization conversion not required by current form; no review approval inferred."
         },
         {
           "id": "policy.apple_declarations",
@@ -1486,11 +1510,17 @@
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": null,
+          "evidence": [
+            {
+              "kind": "artifact",
+              "ref": "Production AAB hash 25d7d9c1276f4af6289e2bcb0b064509d539e57fb3c7bd44964d019c34f7292f; upload certificate verified",
+              "observedAt": "2026-10-03T13:05:10.619344+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-03T13:05:10.619344+00:00",
           "reviewBy": null,
           "blocker": null,
-          "notes": null
+          "notes": "Source candidate freeze and Play-managed install certificate are still pending."
         },
         {
           "id": "qa.device_matrix",
@@ -1911,6 +1941,28 @@
         }
       ],
       "recordedAt": "2026-09-16T00:00:00Z",
+      "supersedes": [],
+      "supersededBy": []
+    },
+    {
+      "id": "K-20261003-PLAY-001",
+      "state": "active",
+      "scope": "app",
+      "statement": "Legacy personal account created this app draft and accepted truthful health feature declaration for storage. No organization prompt or medical-device certification request appeared in that form.",
+      "decision": "Withdraw initial account-type-only launch-blocker inference. Keep final policy/review eligibility pending and retain personal account unchanged.",
+      "affectedItems": [
+        "identity.play_account",
+        "identity.android_package",
+        "policy.play_declarations"
+      ],
+      "evidence": [
+        {
+          "kind": "console",
+          "ref": "Play developer 5547060480954653351 app 4975784705764720395 app-content/health; saved selections reread",
+          "observedAt": "2026-10-03T13:05:10.619344+00:00"
+        }
+      ],
+      "recordedAt": "2026-10-03T13:05:10.619344+00:00",
       "supersedes": [],
       "supersededBy": []
     }

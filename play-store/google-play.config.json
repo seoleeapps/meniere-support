@@ -1,0 +1,52 @@
+{
+  "packageName": "com.seoleeapps.menieresupport",
+  "defaultLanguage": "en-US",
+  "appType": "app",
+  "freeOrPaid": "free",
+  "contactEmail": "cs@seorilabs.com",
+  "contactWebsite": "https://seorilabs.com/",
+  "privacyPolicyUrl": "https://seorilabs.com/apps/meniere-support/privacy/",
+  "storeListing": {
+    "appName": {
+      "ko-KR": "메니에르 기록",
+      "en-US": "Meniere Journal"
+    },
+    "shortDescription": {
+      "ko-KR": "증상·생활 기록, 진료 질문과 의료진과 정한 운동을 한곳에서",
+      "en-US": "Symptom and habit journal, appointment questions and clinician-agreed exercises"
+    },
+    "fullDescription": {
+      "ko-KR": "증상이 있었던 때를 지금 또는 나중에 기록하고, 생활 습관과 진료에서 물어볼 질문을 정리하세요.\n\n• 어지럼, 귀 증상, 지속 시간과 일상에 미친 영향을 기록합니다.\n• 기록한 날과 기록하지 않은 날을 구분합니다. 기록의 빈칸을 증상이 없었다고 해석하지 않습니다.\n• 수면·식사 등 자신이 정한 생활 계획을 기록합니다. 습관과 증상 사이의 원인이나 치료 효과를 판정하지 않습니다.\n• 의료진과 확인한 시선 안정화·지지물을 이용한 균형 운동을 화면으로 수행합니다. 고정된 X, 동작 시범, 준비 시간, 타이머, 일시정지·휴식·중단과 수행 기록을 제공합니다. 운동 시간과 횟수는 직접 선택하며 앱이 처방하거나 강도를 자동으로 높이지 않습니다. 발작 중에는 운동하지 마세요.\n• 선택한 기간의 기록과 질문을 PDF로 정리하고, CSV 또는 비밀번호로 암호화한 백업을 내보냅니다.\n\n건강 기록은 기기에 암호화해 보관합니다. 로그인이나 서버 동기화가 없으며 건강 기록과 메모를 광고에 보내지 않습니다. 기기 분실이나 앱 삭제에 대비하려면 직접 암호화 백업을 저장하세요. PDF와 CSV는 암호화되지 않으므로 공유 대상을 확인하세요.\n\n모든 기록·내보내기·백업은 무료이며 일부 화면에 배너 광고를 표시합니다. 운동, 기록 입력, 도움, 진료 준비 화면에는 광고를 표시하지 않습니다. 한국어와 영어를 지원합니다.\n\n이 앱은 의료기기가 아니며 질환을 진단·치료·완치·예방하지 않습니다. 의학적 조언, 진단 또는 치료는 의료 전문가와 상의하세요. 앱의 운동 프로그램은 의료진의 제품 감수를 받지 않았으며, 본인에게 맞는 운동·시간·횟수를 의료진과 먼저 확인해야 합니다. 앱은 응급 대응이나 의료진 모니터링을 제공하지 않습니다.\n\n문의: cs@seorilabs.com",
+      "en-US": "Record symptoms now or later, keep track of daily habits, and prepare questions for your next appointment.\n\n• Record dizziness, ear symptoms, duration and the effect on daily life.\n• See the difference between recorded and unrecorded days. Missing records are not treated as symptom-free days.\n• Log your own plans for sleep, meals and other habits. The app does not infer causes or treatment effects from your records.\n• Follow gaze stability and supported balance exercises already agreed with your clinician. A fixed X, visual demonstrations, preparation countdown, timer, pauses, rests and stop controls guide each session. Choose your own agreed duration and rounds. The app does not prescribe exercises or automatically increase intensity. Do not exercise during an attack.\n• Prepare a PDF of selected records and questions, export CSV, or save a password-encrypted backup.\n\nHealth records are encrypted on your device. There is no account or server sync, and health records and notes are not sent to ads. Save your own encrypted backup to protect against device loss or uninstall. PDF and CSV exports are not encrypted; check who you share them with.\n\nAll recording, export and backup features are free. Some screens show banner ads. Exercise, record entry, help and appointment preparation screens do not show ads. English and Korean are supported.\n\nThis app is not a medical device and does not diagnose, treat, cure, or prevent any medical condition. Consult a healthcare professional for medical advice, diagnosis, or treatment. The exercise program has not received clinician product review. Confirm suitable exercises, duration and rounds with your clinician before use. The app does not provide emergency response or clinician monitoring.\n\nSupport: cs@seorilabs.com"
+    }
+  },
+  "assets": {
+    "playIcon": "play-store/assets/icon-512.png",
+    "featureGraphic": "play-store/assets/feature-1024x500.png",
+    "phoneScreenshots": [
+      "play-store/screenshots/phone/01-today.png",
+      "play-store/screenshots/phone/02-exercise-guide.png",
+      "play-store/screenshots/phone/03-exercise-demo.png",
+      "play-store/screenshots/phone/04-records.png",
+      "play-store/screenshots/phone/05-visit-summary.png"
+    ]
+  },
+  "contentDeclarations": {
+    "dataSafety": "확정 필요 — SDK 검토 초안만 준비, 콘솔 미신고",
+    "contentRating": "확정 필요 — 콘솔 미신고",
+    "targetAudience": "adults-only-18-and-over",
+    "ads": "yes",
+    "koreaDistribution": "yes",
+    "healthApps": "declared: activity, nutrition, sleep, diseases and conditions management, medical reference and education, physical therapy and rehabilitation; saved and read back in Play Console",
+    "medicalDeviceClassification": "확정 필요 — 국가별 실제 기능 검토 필요"
+  },
+  "release": {
+    "versionName": "0.1.0",
+    "versionCode": 1,
+    "track": "production",
+    "releaseNotes": {
+      "ko-KR": "증상·생활 기록, 진료 PDF와 암호화 백업, 시선 안정화·균형 운동 프로그램을 제공합니다.",
+      "en-US": "Record symptoms and habits, prepare appointment PDFs, save encrypted backups, and follow clinician-agreed exercises."
+    }
+  }
+}
