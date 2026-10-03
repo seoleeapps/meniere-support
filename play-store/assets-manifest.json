@@ -1,0 +1,70 @@
+{
+  "model": "gemini-3-pro-image",
+  "out_dir": "play-store",
+  "background": "#EFF6F4",
+  "brand": "Existing Meniere Journal journal mark and actual Android UI. Calm mint and dark teal. No efficacy claims or hospital imagery.",
+  "items": [
+    {
+      "id": "icon",
+      "kind": "logo",
+      "path": "assets/icon-512.png",
+      "width": 512,
+      "height": 512,
+      "source": "apps/mobile/assets/icon.png",
+      "fit": "contain"
+    },
+    {
+      "id": "feature",
+      "kind": "thumbnail",
+      "path": "assets/feature-1024x500.png",
+      "width": 1024,
+      "height": 500
+    },
+    {
+      "id": "01-today",
+      "kind": "screenshot",
+      "path": "screenshots/phone/01-today.png",
+      "width": 1080,
+      "height": 1920,
+      "source": "artifacts/store-captures/01-today.png"
+    },
+    {
+      "id": "02-exercise-guide",
+      "kind": "screenshot",
+      "path": "screenshots/phone/02-exercise-guide.png",
+      "width": 1080,
+      "height": 1920,
+      "source": "artifacts/store-captures/02-exercise-guide.png"
+    },
+    {
+      "id": "03-exercise-demo",
+      "kind": "screenshot",
+      "path": "screenshots/phone/03-exercise-demo.png",
+      "width": 1080,
+      "height": 1920,
+      "source": "artifacts/store-captures/03-exercise-demo.png"
+    },
+    {
+      "id": "04-records",
+      "kind": "screenshot",
+      "path": "screenshots/phone/04-records.png",
+      "width": 1080,
+      "height": 1920,
+      "source": "artifacts/store-captures/04-records.png"
+    },
+    {
+      "id": "05-visit-summary",
+      "kind": "screenshot",
+      "path": "screenshots/phone/05-visit-summary.png",
+      "width": 1080,
+      "height": 1920,
+      "source": "artifacts/store-captures/05-visit-summary.png"
+    }
+  ],
+  "rules": [
+    {
+      "kind": "screenshot",
+      "min": 3
+    }
+  ]
+}

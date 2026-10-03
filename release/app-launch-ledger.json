@@ -11,7 +11,7 @@
   },
   "ledger": {
     "createdAt": "2026-10-03T04:46:14Z",
-    "updatedAt": "2026-10-03T06:46:35Z",
+    "updatedAt": "2026-10-03T13:05:10.619344+00:00",
     "currentReleaseLedger": "release/market-launch-state.json"
   },
   "sections": {
@@ -1966,6 +1966,5 @@
       "supersedes": [],
       "supersededBy": []
     }
-  ],
-  "updatedAt": "2026-10-03T13:05:10.619344+00:00"
+  ]
 }

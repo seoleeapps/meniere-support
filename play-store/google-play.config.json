@@ -21,9 +21,15 @@
     }
   },
   "assets": {
-    "playIcon": "확정 필요",
-    "featureGraphic": "확정 필요",
-    "phoneScreenshots": []
+    "playIcon": "play-store/assets/icon-512.png",
+    "featureGraphic": "play-store/assets/feature-1024x500.png",
+    "phoneScreenshots": [
+      "play-store/screenshots/phone/01-today.png",
+      "play-store/screenshots/phone/02-exercise-guide.png",
+      "play-store/screenshots/phone/03-exercise-demo.png",
+      "play-store/screenshots/phone/04-records.png",
+      "play-store/screenshots/phone/05-visit-summary.png"
+    ]
   },
   "contentDeclarations": {
     "dataSafety": "확정 필요 — SDK 검토 초안만 준비, 콘솔 미신고",
@@ -31,7 +37,7 @@
     "targetAudience": "adults-only-18-and-over",
     "ads": "yes",
     "koreaDistribution": "yes",
-    "healthApps": "확정 필요 — disease management, physical therapy and rehabilitation",
+    "healthApps": "declared: activity, nutrition, sleep, diseases and conditions management, medical reference and education, physical therapy and rehabilitation; saved and read back in Play Console",
     "medicalDeviceClassification": "확정 필요 — 국가별 실제 기능 검토 필요"
   },
   "release": {
