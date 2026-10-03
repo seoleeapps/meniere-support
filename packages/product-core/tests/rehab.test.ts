@@ -176,3 +176,54 @@ it("restores cross-device plans by exercise while keeping the local plan until e
   expect(replaced.rehabPlans).toEqual(incoming.rehabPlans);
   expect(canStartRehab(replaced, "gaze_horizontal", false)).toBe(false);
 });
+
+it("preserves selected exercise settings through storage and backup restore without adding defaults to older plans", () => {
+  const legacy = {
+    id: "plan",
+    createdAt: now,
+    updatedAt: now,
+    kind: "gaze_horizontal" as const,
+    instruction: "",
+    approved: true,
+  };
+  const original = { ...emptyJournal(), rehabPlans: [legacy] };
+  expect(migrateJournal(original).rehabPlans[0].targetSeconds).toBeUndefined();
+  const saved = {
+    ...original,
+    rehabPlans: [{ ...legacy, targetSeconds: 30, plannedRounds: 2 }],
+  };
+  const reopened = migrateJournal(JSON.parse(JSON.stringify(saved)));
+  const restored = mergeRestore(emptyJournal(), reopened, []);
+  expect(restored.rehabPlans).toEqual(saved.rehabPlans);
+  expect(canStartRehab(restored, "gaze_horizontal", false)).toBe(true);
+  const revoked = {
+    ...restored,
+    rehabPlans: [{ ...restored.rehabPlans[0], approved: false }],
+  };
+  expect(canStartRehab(revoked, "gaze_horizontal", false)).toBe(false);
+});
+
+it("rejects incomplete or unsupported saved exercise settings", () => {
+  const plan = {
+    id: "plan",
+    createdAt: now,
+    updatedAt: now,
+    kind: "gaze_horizontal" as const,
+    instruction: "",
+    approved: true,
+  };
+  for (const settings of [
+    { targetSeconds: 15 },
+    { plannedRounds: 1 },
+    { targetSeconds: 0, plannedRounds: 1 },
+    { targetSeconds: 30, plannedRounds: 6 },
+    { targetSeconds: 15, plannedRounds: 1.5 },
+  ]) {
+    expect(() =>
+      validateJournal({
+        ...emptyJournal(),
+        rehabPlans: [{ ...plan, ...settings }],
+      }),
+    ).toThrow("INVALID_RECORD");
+  }
+});

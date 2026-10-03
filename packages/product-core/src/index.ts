@@ -75,6 +75,8 @@ export interface RehabPlan extends Entity {
   kind: RehabKind;
   instruction: string;
   approved: boolean;
+  targetSeconds?: number;
+  plannedRounds?: number;
 }
 export interface RehabLog extends Entity {
   date: string;
@@ -382,7 +384,10 @@ export function validateJournal(input: unknown): asserts input is Journal {
     assert(
       oneOf(p.kind, kinds) &&
         text(p.instruction, 2000) &&
-        typeof p.approved === "boolean",
+        typeof p.approved === "boolean" &&
+        ((p.targetSeconds === undefined && p.plannedRounds === undefined) ||
+          (oneOf(p.targetSeconds, [15, 30, 60, 90, 120]) &&
+            oneOf(p.plannedRounds, [1, 2, 3, 4, 5]))),
     );
   for (const l of j.rehabLogs) {
     assert(

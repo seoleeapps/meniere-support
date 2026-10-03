@@ -44,13 +44,13 @@ export function RehabScreen({
 }) {
   const t = translator(j.settings.language);
   const [details, setDetails] = useState(false);
+  const [optional, setOptional] = useState(false);
   const [leadIn, setLeadIn] = useState<number | null>(null);
   const [kind, setKind] = useState<RehabKind>("gaze_horizontal"),
     [instruction, setInstruction] = useState(""),
     [approved, setApproved] = useState(false);
   const [seconds, setSeconds] = useState<number | null>(null),
-    [rounds, setRounds] = useState<number | null>(null),
-    [safe, setSafe] = useState(false);
+    [rounds, setRounds] = useState<number | null>(null);
   const [before, setBefore] = useState(""),
     [after, setAfter] = useState(""),
     [note, setNote] = useState("");
@@ -66,8 +66,9 @@ export function RehabScreen({
     const p = j.rehabPlans.find((p) => p.kind === kind);
     setInstruction(p?.instruction ?? "");
     setApproved(p?.approved ?? false);
-    setSafe(false);
-  }, [kind]);
+    setSeconds(p?.targetSeconds ?? null);
+    setRounds(p?.plannedRounds ?? null);
+  }, [kind, j.rehabPlans]);
   useEffect(() => {
     onEditingChange(Boolean(program || editing));
     return () => onEditingChange(false);
@@ -187,12 +188,34 @@ export function RehabScreen({
     );
     return false;
   };
+  const withPlan = (confirmed = approved) => {
+    const now = clock.now(),
+      existing = j.rehabPlans.find((p) => p.kind === kind);
+    return {
+      ...j,
+      rehabPlans: [
+        ...j.rehabPlans.filter((p) => p.kind !== kind),
+        {
+          id: existing?.id ?? `rehab-plan-${kind}`,
+          createdAt: existing?.createdAt ?? now,
+          updatedAt: now,
+          kind,
+          instruction,
+          approved: confirmed,
+          ...(seconds !== null && rounds !== null
+            ? { targetSeconds: seconds, plannedRounds: rounds }
+            : {}),
+        },
+      ],
+    };
+  };
   const start = async () => {
+    const next = withPlan();
     if (
+      busy ||
       seconds === null ||
       rounds === null ||
-      !safe ||
-      !canStartRehab(j, kind, false) ||
+      !canStartRehab(next, kind, false) ||
       !checkRatings()
     )
       return;
@@ -207,7 +230,7 @@ export function RehabScreen({
       timeZone: zone,
       occurredAt: now,
       kind,
-      plan: j.rehabPlans.find((p) => p.kind === kind)?.instruction ?? "",
+      plan: instruction,
       targetSeconds: seconds,
       plannedRounds: rounds,
       completedRounds: 0,
@@ -217,7 +240,7 @@ export function RehabScreen({
       outcome: "unfinished",
       note: "",
     };
-    if (await commit({ ...j, rehabLogs: [...j.rehabLogs, r] })) {
+    if (await commit({ ...next, rehabLogs: [...j.rehabLogs, r] })) {
       setRecord(r);
       setProgram({ ...p, phase: "paused" });
       setLeadIn(3);
@@ -246,7 +269,6 @@ export function RehabScreen({
     ) {
       setProgram(null);
       setRecord(null);
-      setSafe(false);
       setBefore("");
       setAfter("");
       setNote("");
@@ -258,6 +280,12 @@ export function RehabScreen({
     setAfter("");
     setNote("");
   };
+  const activeEpisode = j.episodes.some((e) => e.active);
+  const missing = [
+    seconds === null ? t("한 회차 시간", "time per round") : null,
+    rounds === null ? t("반복 횟수", "repetitions") : null,
+    !approved ? t("의료진 확인", "clinician confirmation") : null,
+  ].filter(Boolean);
   if (program && record) {
     return (
       <>
@@ -441,7 +469,7 @@ export function RehabScreen({
           "Learn the movement visually, then follow the exercise agreed with your clinician. Rest during an attack.",
         )}
       </Copy>
-      {j.episodes.some((e) => e.active) && (
+      {activeEpisode && (
         <Card>
           <Heading small>
             {t("발작 기록이 진행 중입니다", "An episode is in progress")}
@@ -461,8 +489,6 @@ export function RehabScreen({
         name={(v) => rehabName(v, t)}
         onChange={(v) => {
           setKind(v);
-          setSeconds(null);
-          setRounds(null);
         }}
       />
       <Card>
@@ -493,102 +519,104 @@ export function RehabScreen({
           </>
         )}
       </Card>
-      <Field
-        label={t(
-          "의료진과 정한 운동 계획 · 시간·횟수·주의점",
-          "Agreed exercise plan · time, repetitions, precautions",
-        )}
-        multiline
-        maxLength={2000}
-        value={instruction}
-        onChangeText={setInstruction}
-      />
       <Choices
-        label={t(
-          "이 운동을 의료진과 확인했나요?",
-          "Has your clinician confirmed this exercise?",
-        )}
-        values={["no", "yes"] as const}
-        selected={[approved ? "yes" : "no"]}
-        name={(v) =>
-          v === "yes"
-            ? t("확인했어요", "Confirmed")
-            : t("아직이에요", "Not yet")
-        }
-        onChange={(v) => setApproved(v === "yes")}
-      />
-      <Button
-        secondary
-        disabled={busy}
-        label={t("운동 계획 저장", "Save exercise plan")}
-        onPress={() => {
-          const now = clock.now(),
-            existing = j.rehabPlans.find((p) => p.kind === kind);
-          void commit({
-            ...j,
-            rehabPlans: [
-              ...j.rehabPlans.filter((p) => p.kind !== kind),
-              {
-                id: existing?.id ?? `rehab-plan-${kind}`,
-                createdAt: existing?.createdAt ?? now,
-                updatedAt: now,
-                kind,
-                instruction,
-                approved,
-              },
-            ],
-          });
-        }}
-      />
-      <Choices
-        label={t("확인한 회차당 시간", "Agreed time per round")}
+        label={t("한 회차 시간", "Time per round")}
         values={["15", "30", "60", "90", "120"]}
         selected={seconds === null ? [] : [String(seconds)]}
         name={(v) => `${v} ${t("초", "sec")}`}
         onChange={(v) => setSeconds(Number(v))}
       />
       <Choices
-        label={t("확인한 반복 횟수", "Agreed repetitions")}
+        label={t("반복 횟수", "Repetitions")}
         values={["1", "2", "3", "4", "5"]}
         selected={rounds === null ? [] : [String(rounds)]}
         name={(v) => `${v} ${t("회", "rounds")}`}
         onChange={(v) => setRounds(Number(v))}
       />
-      <Field
-        label={t(
-          "운동 전 불편감 · 0~10, 선택",
-          "Discomfort before · 0–10, optional",
-        )}
-        keyboardType="number-pad"
-        value={before}
-        onChangeText={setBefore}
-        maxLength={2}
-      />
       <Choices
         label={t(
-          "지금 발작이 없고, 안전한 자리와 고정된 거치대·지지물을 준비했나요?",
-          "No acute attack now, with a safe space and a fixed holder or support?",
+          "의료진과 정한 설정을 사용하세요",
+          "Use settings agreed with your clinician",
         )}
-        values={["no", "yes"] as const}
-        selected={[safe ? "yes" : "no"]}
-        name={(v) =>
-          v === "yes" ? t("준비됐어요", "Ready") : t("아직이에요", "Not yet")
+        values={["confirmed"] as const}
+        multiple
+        selected={approved ? ["confirmed"] : []}
+        name={() =>
+          t(
+            "운동·시간·횟수를 의료진과 확인했어요",
+            "My clinician confirmed the exercise, time and repetitions",
+          )
         }
-        onChange={(v) => setSafe(v === "yes")}
+        onChange={() => {
+          if (busy) return;
+          void commit(withPlan(!approved));
+        }}
       />
+      <Copy muted>
+        {missing.length
+          ? t(
+              `시작하려면 선택해 주세요: ${missing.join(" · ")}`,
+              `Choose before starting: ${missing.join(" · ")}`,
+            )
+          : t(
+              "시작할 때 설정을 저장해 다음 운동에도 불러옵니다.",
+              "Starting saves these settings for your next session.",
+            )}
+      </Copy>
+      <Button
+        secondary
+        label={
+          optional
+            ? t("메모 접기", "Hide notes")
+            : t(
+                "계획 메모·운동 전 불편감 · 선택",
+                "Plan notes & discomfort before · optional",
+              )
+        }
+        onPress={() => setOptional(!optional)}
+      />
+      {optional && (
+        <>
+          <Field
+            label={t("계획 메모 · 선택", "Plan notes · optional")}
+            multiline
+            maxLength={2000}
+            value={instruction}
+            onChangeText={setInstruction}
+          />
+          <Field
+            label={t(
+              "운동 전 불편감 · 0~10, 선택",
+              "Discomfort before · 0–10, optional",
+            )}
+            keyboardType="number-pad"
+            value={before}
+            onChangeText={setBefore}
+            maxLength={2}
+          />
+        </>
+      )}
       <Button
         testID="start-rehab"
-        disabled={
-          busy ||
-          seconds === null ||
-          rounds === null ||
-          !safe ||
-          !canStartRehab(j, kind, false) ||
-          !approved ||
-          instruction !== j.rehabPlans.find((p) => p.kind === kind)?.instruction
-        }
-        label={t("운동 프로그램 시작", "Start exercise program")}
-        onPress={() => void start()}
+        disabled={busy || activeEpisode || missing.length > 0}
+        label={t("운동 시작하기", "Start exercise")}
+        onPress={() => {
+          if (!checkRatings()) return;
+          Alert.alert(
+            t("지금 운동할 준비가 됐나요?", "Ready to exercise now?"),
+            t(
+              "지금 발작이 없고, 안전한 자리와 고정된 거치대·지지물을 준비했을 때 시작하세요. 강한 어지럼·구역, 목 통증이 생기면 중단하세요.",
+              "Start only when you have no acute attack, a safe space and a fixed holder or support. Stop for strong dizziness, nausea or neck pain.",
+            ),
+            [
+              { text: t("아직이에요", "Not yet"), style: "cancel" },
+              {
+                text: t("준비됐어요, 시작", "Ready, start"),
+                onPress: () => void start(),
+              },
+            ],
+          );
+        }}
       />
       <Copy muted>
         {t(
