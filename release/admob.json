@@ -1,7 +1,7 @@
 {
   "accountEmail": "wellknowngeek@gmail.com",
   "publisherId": "pub-9932778305312246",
-  "verifiedAt": "2026-10-03",
+  "verifiedAt": "2026-10-04",
   "android": {
     "appId": "ca-app-pub-9932778305312246~4130423403",
     "bannerId": "ca-app-pub-9932778305312246/7710575763"
@@ -12,5 +12,6 @@
   },
   "format": "banner",
   "storeVerification": "pending",
-  "umpMessages": "pending"
+  "umpMessages": "Android app-scoped GDPR and US-states messages published 2026-10-04; device verification pending",
+  "umpEvidence": "release/play-console-evidence.json"
 }

@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-04T00:55:08.247337+00:00",
+  "sourceRevision": "20784bb6cb6ef0168c2203f702d2e4e7a248783d",
+  "tag": "v0.1.0",
+  "packageName": "com.seoleeapps.menieresupport",
+  "versionName": "0.1.0",
+  "versionCode": 1,
+  "minSdk": 24,
+  "targetSdk": 36,
+  "artifact": "artifacts/android-launch-20261004/Meniere-Journal-0.1.0-production.aab",
+  "sha256": "25d7d9c1276f4af6289e2bcb0b064509d539e57fb3c7bd44964d019c34f7292f",
+  "uploadCertificateSha256": "8D:C5:73:FB:D9:5C:BF:52:07:F0:8B:43:70:6D:8B:70:B7:B3:50:EF:EA:07:B6:0B:27:5D:59:12:49:21:AB:E9",
+  "playCertificates": {
+    "deployment": "9E:FD:23:5A:69:39:E1:3A:E7:59:D1:BF:BE:F4:77:EF:63:AE:5D:96:F8:CB:0F:16:1C:C3:0E:C0:FA:97:BE:AF",
+    "hybridClassical": "1C:38:CB:29:60:27:5A:03:D5:C1:E5:81:A8:4D:31:9D:17:19:F0:95:53:80:B2:B5:A4:6D:1B:05:CE:97:E8:52",
+    "hybridPqc": "74:A2:D1:D6:99:CB:94:FC:11:45:FC:6C:0C:7A:81:1F:60:45:D8:2A:92:F7:AB:57:36:AF:AA:A9:0C:9F:07:BB"
+  },
+  "validation": [
+    "pnpm check: 38 tests and TypeScript/architecture/release schema passed",
+    "Expo dependency check passed",
+    "Gradle bundleRelease passed",
+    "bundletool 1.18.3 validate passed",
+    "jarsigner verify passed",
+    "Play upload certificate readback matches local app upload key"
+  ],
+  "installedCandidateQa": "pending",
+  "existingDevice": {
+    "model": "Seeker",
+    "serial": "SM02G4061934977",
+    "androidApi": 36,
+    "version": "0.1.0/1",
+    "installer": null,
+    "certificateSha256": "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C",
+    "dataAction": "No uninstall, clear data, or record mutation performed. Waiting for explicit data-preservation choice."
+  }
+}
