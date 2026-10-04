@@ -1,0 +1,75 @@
+{
+  "checkedAt": "2026-10-04T05:50:52.680993+00:00",
+  "versionName": "0.1.1",
+  "versionCode": 2,
+  "sourceRevision": "a76f0880c20a6ef6d8c17958f0cd46203c4d1d91",
+  "tag": "v0.1.1",
+  "device": {
+    "model": "Seeker",
+    "apiLevel": 36
+  },
+  "installation": {
+    "channel": "Google Play internal",
+    "installerPackage": "com.android.vending",
+    "firstInstallTimeDevice": "2026-10-04 12:30:18",
+    "lastUpdateTimeDevice": "2026-10-04 14:20:17",
+    "baseApkSha256": "2a1c0a882891cf75f14b306890939e9b7196cdb4df4a4ab0d574e596d14181f2",
+    "splitCount": 4,
+    "certificateSha256": "9E:FD:23:5A:69:39:E1:3A:E7:59:D1:BF:BE:F4:77:EF:63:AE:5D:96:F8:CB:0F:16:1C:C3:0E:C0:FA:97:BE:AF",
+    "signatureVerificationSdk": 36,
+    "debuggable": false
+  },
+  "passed": [
+    "Play updated the existing installation in place to 0.1.1/2; source runtime matches frozen v0.1.1",
+    "Cold start without Metro: 666 ms online; 638 ms offline",
+    "No default network during offline episode start/end; saved episode appears in history",
+    "Active episode disables exercise even with saved duration, rounds and temporary confirmation",
+    "Exercise start disabled before selections; enabled after 15 seconds, 2 rounds and fictional QA confirmation",
+    "Readiness cancellation and background during preparation preserve a paused session",
+    "Manual resume, rest after first round and manual next-round advancement",
+    "15 seconds x2 yields 30 seconds excluding rest; completion saved and persisted after force-stop/cold start",
+    "Native PDF preview rendered one A4 page; local save produced a valid 124301-byte PDF with Korean content",
+    "PDF share warning confirmed; Android Print recipient read and rendered the shared PDF after selection",
+    "CSV sharing warning and native chooser with .csv attachment; cancellation returns to app",
+    "Encrypted backup created with matching private password inputs; native chooser receives .mjb attachment; cancellation returns to app",
+    "Habit selection and daily check-in save; English settings rendering and Korean return",
+    "Privacy-policy control opened the app-specific Korean policy in Chrome",
+    "Temporary QA data erased; original encrypted archive restored and every original record compared identical after cold start",
+    "Original Korean/system preferences and enabled, unpaused 20:00 reminder restored; POST_NOTIFICATIONS granted and app alarm present",
+    "Wi-Fi and mobile-data states restored enabled; real default network and play.google.com DNS/ping confirmed",
+    "No new target-process fatal crash entries since Play updated to 0.1.1/2"
+  ],
+  "ads": {
+    "sdkRequestObserved": true,
+    "sourceRequestPolicy": "Nonpersonalized banner only; prepare gates requests on canRequestAds; no health data in requests",
+    "privacyOptionsSdkResult": "Privacy options form is not required on this device",
+    "realAdRendered": "not verified",
+    "regionalForms": "GDPR and US-states production messages published; regional form display not exercised on this device",
+    "admobReview": "Store linking and AdMob app review await public Play availability; no real ad click performed"
+  },
+  "knownNonblockingIssues": [
+    {
+      "flow": "Optional advertising privacy choices on a device where no form is required",
+      "observed": "UMP reports Privacy options form is not required; the app shows its generic operation-error alert mentioning storage/password",
+      "impact": "Confusing message on an optional settings action; dismissible; journal, exercise, backup and restored records remain available",
+      "followUp": "Check privacyOptionsRequirementStatus and show a specific no-form-required result rather than a storage/password error"
+    }
+  ],
+  "limitations": [
+    "No actual human exercise or efficacy/clinician review",
+    "No EU/US location simulation or real-ad impression verified",
+    "CSV/MJB chooser handoff and cancellation tested; external receiver storage/consumption not claimed for those formats",
+    "Notification permission and scheduling verified; actual 20:00 delivery not waited for",
+    "One physical API36 device; older devices, large-text/screen-reader and iOS checks remain separate"
+  ],
+  "originalRecords": {
+    "privateEncryptedArchiveUnchanged": true,
+    "allRecordsIdenticalAfterColdStart": true,
+    "noNewRecordsOrConflicts": true,
+    "originalReminderRestored": true,
+    "healthContentsAndPasswordInRepository": false
+  },
+  "exerciseTest": "Stationary-device simulated program; temporary confirmation is fictional QA, not clinician approval; erased before restoring originals",
+  "artifacts": "artifacts/android-play-v0.1.1-qa-20261004 (ignored, private local evidence)",
+  "verdict": "Critical Android product flows pass; optional privacy-options wording issue and actual ad-serving/regional-form verification remain documented"
+}
