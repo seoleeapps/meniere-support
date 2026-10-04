@@ -500,20 +500,20 @@
           "title": "lint, typecheck, 테스트, 아키텍처와 릴리스 설정 검사가 CI에 있다",
           "appliesTo": ["all"],
           "reviewCadence": "per_release",
-          "status": "pending",
-          "value": "검증 또는 출시 후 확인 필요",
+          "status": "pass",
+          "value": "41개 테스트·타입·구조·출시 형식 검사와 Android JS 번들 CI 통과",
           "owner": "Seorilabs",
           "evidence": [
             {
               "kind": "repo",
-              "ref": "pnpm check passed locally: 33 core + 5 renderer tests; architecture and metadata checks",
-              "observedAt": "2026-10-03T13:05:10.619344+00:00"
+              "ref": "https://github.com/seoleeapps/meniere-support/actions/runs/37176218191",
+              "observedAt": "2026-10-04T04:23:02.657598+00:00"
             }
           ],
-          "checkedAt": "2026-10-03T13:05:10.619344+00:00",
+          "checkedAt": "2026-10-04T04:23:02.657598+00:00",
           "reviewBy": null,
           "blocker": null,
-          "notes": "Current release preparation PR CI still pending."
+          "notes": "Current Android release scope; no iOS submission or public launch is claimed."
         },
         {
           "id": "engineering.release_pipeline",
@@ -1387,7 +1387,7 @@
           "checkedAt": "2026-10-04T00:14:31.508703+00:00",
           "reviewBy": null,
           "blocker": null,
-          "notes": "Saved declarations are not eligibility or review approval. Support inquiry and withdrawal are actual sent messages caused by our authorization mistake, not explicitly approved messages. No further contact; future support messages require recipient/content preview and explicit 지원팀에 요청을 보내겠습니까? approval. Support reply is not a pre-submission dependency. Listing/images, country selection and current-candidate QA remain incomplete."
+          "notes": "Saved declarations and current178 country rows are read back; final eligibility/review approval and current-candidate device QA remain separate. No support reply is required; no further support contact."
         },
         {
           "id": "policy.apple_declarations",
@@ -1448,42 +1448,60 @@
           "title": "앱 이름, 부제, 설명, 키워드, 카테고리와 기능 주장이 현지화됐다",
           "appliesTo": ["all"],
           "reviewCadence": "per_release",
-          "status": "pending",
-          "value": "검증 또는 출시 후 확인 필요",
+          "status": "pass",
+          "value": "Android en-US·ko-KR 텍스트와 기능 주장 저장·대조 완료",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": null,
+          "evidence": [
+            {
+              "kind": "console",
+              "ref": "release/play-console-evidence.json: storeListing",
+              "observedAt": "2026-10-04T04:23:02.657598+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-04T04:23:02.657598+00:00",
           "reviewBy": null,
           "blocker": null,
-          "notes": null
+          "notes": "Current Android release scope; no iOS submission or public launch is claimed."
         },
         {
           "id": "store.visual_assets",
           "title": "아이콘·로고·feature graphic·thumbnail·스크린샷이 실제 UI와 규격에 맞다",
           "appliesTo": ["all"],
           "reviewCadence": "per_release",
-          "status": "pending",
-          "value": "검증 또는 출시 후 확인 필요",
+          "status": "pass",
+          "value": "Android 아이콘·feature graphic·실제 화면 5장 규격 검사와 Console 등록 완료",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": null,
+          "evidence": [
+            {
+              "kind": "console",
+              "ref": "release/play-console-evidence.json: storeListing.assets",
+              "observedAt": "2026-10-04T04:23:02.657598+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-04T04:23:02.657598+00:00",
           "reviewBy": null,
           "blocker": null,
-          "notes": null
+          "notes": "Current Android release scope; no iOS submission or public launch is claimed."
         },
         {
           "id": "store.release_notes",
           "title": "후보별 사용자용 릴리스 노트가 실제 변경과 일치한다",
           "appliesTo": ["all"],
           "reviewCadence": "per_release",
-          "status": "pending",
-          "value": "검증 또는 출시 후 확인 필요",
+          "status": "pass",
+          "value": "0.1.1/2 내부 테스트의 한국어·영어 노트 저장·재조회 완료",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": null,
+          "evidence": [
+            {
+              "kind": "console",
+              "ref": "Internal release2 review showed2/2 locales; play-store/google-play.config.json",
+              "observedAt": "2026-10-04T04:23:02.657598+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-04T04:23:02.657598+00:00",
           "reviewBy": null,
           "blocker": null,
-          "notes": null
+          "notes": "Current Android release scope; no iOS submission or public launch is claimed."
         },
         {
           "id": "store.availability",
