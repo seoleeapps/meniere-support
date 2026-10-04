@@ -42,8 +42,8 @@
     "dataSafetyCsv": "play-store/policy/data-safety.csv"
   },
   "release": {
-    "versionName": "0.1.0",
-    "versionCode": 1,
+    "versionName": "0.1.1",
+    "versionCode": 2,
     "track": "production",
     "releaseNotes": {
       "ko-KR": "증상·생활 기록, 진료 PDF와 암호화 백업, 시선 안정화·균형 운동 프로그램을 제공합니다.",

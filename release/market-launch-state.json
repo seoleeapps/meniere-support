@@ -203,7 +203,8 @@
       "2026-10-03 user: 안드로이드 출시까지 진행해. legacy-admob 프로필로",
       "docs/approved-contract.md",
       "2026-10-04 user clarified that 승인한다. meant app submission, not a support inquiry. Existing Android public launch approval remains in scope.",
-      "2026-10-04 user: 굳이 문의를 왜 해 어차피 안되면 심사에서 걸렀겠지. Proceed with truthful app submission; support reply is not a pre-submission dependency."
+      "2026-10-04 user: 굳이 문의를 왜 해 어차피 안되면 심사에서 걸렀겠지. Proceed with truthful app submission; support reply is not a pre-submission dependency.",
+      "2026-10-04 user: 진행해. Continue device installation/testing and Android launch; preserve records with a verified encrypted backup before signature replacement."
     ]
   },
   "commonGates": {
@@ -304,12 +305,13 @@
         "qa": {
           "status": "blocked",
           "evidence": [
-            "Connected Seeker API36 currently has debug-signed release APK, not Play-installed candidate",
-            "Existing APK certificate FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C differs from Play deployment/hybrid certificates",
-            "No uninstall, data reset or record mutation performed; user asked how to preserve records and which Google Play email to use"
+            "release/android-play-qa-v0.1.0.json",
+            "Seeker API36: Play installer and deployment certificate verified; cold/offline record and exercise flows passed; PDF preview failed",
+            "Device Google account syous.seo@gmail.com verified, added to this app-only tester list and native invitation read back as tester; prior account/data-choice dependency resolved",
+            "Original encrypted full-journal backup verified and archived privately before uninstall; restore in progress; no support contact"
           ],
-          "checkedAt": "2026-10-04T00:59:21.791619+00:00",
-          "blocker": "Physical Play install requires the device Google Play email and explicit backup/uninstall choice because changing signatures requires deleting the existing app and local records."
+          "checkedAt": "2026-10-04T04:00:29.637002+00:00",
+          "blocker": "Play-installed 0.1.0/1 crashes opening PDF preview because its temporary file is deleted before asynchronous native reading. Fix and verify a new 0.1.1/2 candidate before submission."
         },
         "metadata": {
           "status": "pass",
@@ -367,6 +369,7 @@
     "Public objective remains approved. User clarified a personal record and previously learned exercise support tool, not a medical-device or clinical-service launch.",
     "Personal account allowed app creation and truthful health-feature declaration save. No final review has occurred; do not infer public eligibility from form save.",
     "User requires explicit recipient/content approval with 지원팀에 요청을 보내겠습니까? before any support contact. No further contact on case 6-9591000041645; existing inquiry/withdrawal were sent and are recorded, not eligibility evidence or a prerequisite to submission.",
-    "Fixed candidate, signed AAB, internal release, localized listing, app-scoped consent messages and country selection complete. Production review/public launch remain pending installed-candidate QA; preserve existing device records."
+    "Fixed candidate, signed AAB, internal release, localized listing, app-scoped consent messages and country selection complete. Production review/public launch remain pending installed-candidate QA; preserve existing device records.",
+    "0.1.0/1 failed real Play-installed PDF preview QA and will not be submitted. Native file handoff lifetime is being corrected for 0.1.1/2; freeze its source and reset candidate gates after merge."
   ]
 }

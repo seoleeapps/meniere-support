@@ -19,7 +19,7 @@ if (
 module.exports = {
   name: "Meniere Journal",
   slug: "meniere-support",
-  version: "0.1.0",
+  version: "0.1.1",
   orientation: "portrait",
   scheme: "meniere-journal",
   userInterfaceStyle: "automatic",
@@ -34,7 +34,7 @@ module.exports = {
   },
   android: {
     package: "com.seoleeapps.menieresupport",
-    versionCode: 1,
+    versionCode: 2,
     allowBackup: false,
     adaptiveIcon: {
       foregroundImage: "./assets/adaptive-icon.png",

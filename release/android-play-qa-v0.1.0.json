@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-04T04:00:29.637002+00:00",
+  "versionName": "0.1.0",
+  "versionCode": 1,
+  "sourceRevision": "20784bb6cb6ef0168c2203f702d2e4e7a248783d",
+  "device": {
+    "model": "Seeker",
+    "apiLevel": 36
+  },
+  "installation": {
+    "channel": "Google Play internal",
+    "installerPackage": "com.android.vending",
+    "firstInstallTimeDevice": "2026-10-04 12:30:18",
+    "baseApkSha256": "c3d95e50592e92a832e621282c27a50eec99d8fb14dff7d43809b67720a749a6",
+    "splitCount": 4,
+    "certificateSha256": "9E:FD:23:5A:69:39:E1:3A:E7:59:D1:BF:BE:F4:77:EF:63:AE:5D:96:F8:CB:0F:16:1C:C3:0E:C0:FA:97:BE:AF",
+    "signatureVerificationSdk": 36,
+    "debuggable": false
+  },
+  "passed": [
+    "cold start without Metro",
+    "offline cold start with no default network",
+    "offline episode start/end",
+    "exercise disabled until required choices complete",
+    "partial duration retained after confirmation change",
+    "start readiness cancellation",
+    "background pauses exercise",
+    "manual resume and rest advancement",
+    "15 seconds x2: 30 seconds excluding rest; save and cold-start persistence",
+    "active episode disables exercise start"
+  ],
+  "failed": {
+    "flow": "PDF preview",
+    "deviceCrashAt": "2026-10-04 12:46:41.768",
+    "exception": "IllegalStateException: Already resumed; PrintDocumentAdapter CannotLoadUriException",
+    "cause": "App deleted temporary PDF after printAsync resolved, before asynchronous Android onWrite loaded it"
+  },
+  "verdict": "not for submission; next candidate 0.1.1/2 required",
+  "originalRecords": "Encrypted complete-journal backup roundtrip and private local copy hash verified before signature-change uninstall. No health contents or backup password recorded here. Fictional QA records cleared before original restore.",
+  "exerciseTest": "Stationary-device simulated program; temporary confirmation value is fictional QA, not clinician or efficacy review."
+}
