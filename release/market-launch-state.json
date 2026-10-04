@@ -205,7 +205,8 @@
       "2026-10-04 user clarified that 승인한다. meant app submission, not a support inquiry. Existing Android public launch approval remains in scope.",
       "2026-10-04 user: 굳이 문의를 왜 해 어차피 안되면 심사에서 걸렀겠지. Proceed with truthful app submission; support reply is not a pre-submission dependency.",
       "2026-10-04 user: 진행해. Continue device installation/testing and Android launch; preserve records with a verified encrypted backup before signature replacement.",
-      "2026-10-04 user: 실기기 검증 네가 진행할거지? Physical-device verification continued under existing Android launch approval."
+      "2026-10-04 user: 실기기 검증 네가 진행할거지? Physical-device verification continued under existing Android launch approval.",
+      "2026-10-04 user: 출시 진행해. Continue the existing Android public launch and required AdMob setup."
     ]
   },
   "commonGates": {
@@ -231,14 +232,15 @@
       "blocker": null
     },
     "production_dependencies": {
-      "status": "pending",
+      "status": "blocked",
       "evidence": [
         "App-specific privacy page opened on actual candidate; Korean/English policies and app-ads.txt verified; offline app needs no backend/login/IAP/remote analytics",
         "Android-only production GDPR/US-state messages published; production SDK request observed on0.1.1/2",
-        "Actual ad rendering, regional consent form display, public-store linking and AdMob review remain unverified; optional no-form-required alert is documented"
+        "Google Play store link saved and reread; app-ads.txt verification failed despite matching public snippet and successful HTTP/HTTPS/robots checks; release/admob-store-verification-evidence.json",
+        "Actual ad rendering and regional consent forms remain unverified; readiness review cannot be confirmed before app verification"
       ],
-      "checkedAt": "2026-10-04T05:50:52.680993+00:00",
-      "blocker": null
+      "checkedAt": "2026-10-04T06:16:52.891694+00:00",
+      "blocker": "AdMob app verification is 확인 안됨 after saved Play link and an explicit update check; readiness state 검토 필요. Exact target crawl URL is not available in the status table."
     },
     "observability": {
       "status": "na",
@@ -340,15 +342,15 @@
             "Submission activity ID1 at14:46KST; current status 검토 중; production release2 contains0.1.1/2",
             "release/play-console-evidence.json: exact track/release/version/countries/rollout and Console screenshots"
           ],
-          "checkedAt": "2026-10-04T05:49:14.361988+00:00",
+          "checkedAt": "2026-10-04T06:16:52.891694+00:00",
           "blocker": null
         },
         "approval": {
           "status": "pending",
           "evidence": [
-            "Submission1 remains 검토 중 at2026-10-04T05:49:14.361988+00:00; Google owns the next review transition"
+            "Submission1 remains 검토 중 at2026-10-04T06:16:52.891694+00:00; Google owns the next review transition"
           ],
-          "checkedAt": "2026-10-04T05:49:14.361988+00:00",
+          "checkedAt": "2026-10-04T06:16:52.891694+00:00",
           "blocker": null
         },
         "release": {
@@ -356,15 +358,16 @@
           "evidence": [
             "Managed publishing disabled; full rollout will follow approval; not currently public"
           ],
-          "checkedAt": "2026-10-04T05:50:52.680993+00:00",
+          "checkedAt": "2026-10-04T06:16:52.891694+00:00",
           "blocker": null
         },
         "live_smoke": {
           "status": "pending",
           "evidence": [
-            "Public-channel install and AdMob store linking/app review can run after Google approval and public availability"
+            "Public-channel install remains pending Google approval and public availability; AdMob store link is already saved, app verification/readiness approval and actual ads remain unverified",
+            "release/admob-store-verification-evidence.json"
           ],
-          "checkedAt": "2026-10-04T05:50:52.680993+00:00",
+          "checkedAt": "2026-10-04T06:16:52.891694+00:00",
           "blocker": null
         }
       }
@@ -377,6 +380,7 @@
     "Personal-account health-app classification remains for truthful Google review; no clinician certification or support eligibility clearance claimed.",
     "2026-10-04: Play0.1.1/2 physical QA completed; original records restored and identical after cold start; original reminder restored; private archive preserved",
     "2026-10-04: Production submission ID1 is in review; approval, public rollout and public-channel live smoke remain pending",
-    "Optional privacy-options action shows generic error when UMP reports form not required; core flows remain available. Real ad serving and regional forms are not claimed verified"
+    "Optional privacy-options action shows generic error when UMP reports form not required; core flows remain available. Real ad serving and regional forms are not claimed verified",
+    "2026-10-04 15:07KST: AdMob Google Play link saved for exact package while unreviewed; app-ads.txt verification failed. Public file and same-account other-app verification do not establish this app as verified."
   ]
 }

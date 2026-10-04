@@ -11,7 +11,7 @@
   },
   "ledger": {
     "createdAt": "2026-10-03T04:46:14Z",
-    "updatedAt": "2026-10-04T05:50:52.680993+00:00",
+    "updatedAt": "2026-10-04T06:16:52.891694+00:00",
     "currentReleaseLedger": "release/market-launch-state.json"
   },
   "sections": {
@@ -1169,12 +1169,18 @@
           "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
-          "value": "검증 필요",
+          "value": "Production SDK requests observed on Android0.1.1/2; store link saved; app verification failed; actual banner unverified",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": "2026-10-03T05:26:44Z",
+          "evidence": [
+            {
+              "kind": "console",
+              "ref": "release/admob-store-verification-evidence.json",
+              "observedAt": "2026-10-04T06:16:52.891694+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-04T06:16:52.891694+00:00",
           "reviewBy": null,
-          "blocker": "실제 광고는 스토어 연결·AdMob 검토·UMP 메시지 및 동의 QA 필요",
+          "blocker": "Android Google Play link saved; AdMob app-ads.txt verification failed, readiness review required; actual banner and regional consent forms remain unverified",
           "notes": null
         },
         {
@@ -1645,11 +1651,16 @@
               "kind": "document",
               "ref": "release/android-play-qa-v0.1.1.json",
               "observedAt": "2026-10-04T05:50:52.680993+00:00"
+            },
+            {
+              "kind": "console",
+              "ref": "release/admob-store-verification-evidence.json",
+              "observedAt": "2026-10-04T06:16:52.891694+00:00"
             }
           ],
-          "checkedAt": "2026-10-04T05:50:52.680993+00:00",
+          "checkedAt": "2026-10-04T06:16:52.891694+00:00",
           "reviewBy": null,
-          "blocker": "AdMob store linking/app review after public release; actual banner/region consent tests pending",
+          "blocker": "Android Google Play link saved; AdMob app-ads.txt verification failed, readiness review required; actual banner and regional consent forms remain unverified",
           "notes": "Optional privacy-options request on a non-required device shows generic operation-error alert; core flows unaffected"
         },
         {
