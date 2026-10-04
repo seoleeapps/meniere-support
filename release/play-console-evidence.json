@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T05:49:14.361988+00:00",
+  "checkedAt": "2026-10-04T06:16:52.891694+00:00",
   "developerAccountId": "5547060480954653351",
   "appConsoleId": "4975784705764720395",
   "profile": "legacy-admob",
@@ -65,7 +65,18 @@
     "sharedMessagesChanged": false,
     "note": "Publication can take up to one hour to propagate; publishing is not device consent or real-ad verification.",
     "appAdsTxt": "https://seorilabs.com/app-ads.txt includes google.com, pub-9932778305312246, DIRECT, f08c47fec0942fa0; HTTP 200",
-    "deviceQa": "Production SDK requests observed; privacy-options API reports form not required on this device; generic optional-action alert remains. Actual ad rendering and regional forms not verified."
+    "deviceQa": "Production SDK requests observed; privacy-options API reports form not required on this device; generic optional-action alert remains. Actual ad rendering and regional forms not verified.",
+    "storeLink": {
+      "status": "saved",
+      "store": "Google Play",
+      "packageName": "com.seoleeapps.menieresupport",
+      "savedAt": "2026-10-04T06:07:00.315121+00:00",
+      "displayName": "com.seoleeapps.menieresupport (unreviewed)",
+      "evidence": "release/admob-store-verification-evidence.json"
+    },
+    "appVerification": "확인 안됨; app-ads.txt verification failed",
+    "readinessApproval": "검토 필요; not under readiness review",
+    "verificationEvidence": "release/admob-store-verification-evidence.json"
   },
   "productionSubmission": "submitted; submission ID1; in review",
   "publicRelease": "not live",
@@ -138,12 +149,14 @@
     "countries": "177 named countries/regions plus Other countries",
     "managedPublishing": false,
     "rollout": "full after review",
-    "lastCheckedAt": "2026-10-04T05:49:14.361988+00:00",
+    "lastCheckedAt": "2026-10-04T06:16:52.891694+00:00",
     "activityUrl": "https://play.google.com/console/u/0/developers/5547060480954653351/app/4975784705764720395/publishing/submission-activity",
     "screenshots": [
       "meniere-v011-submitted-20261004-1449.png",
-      "meniere-v011-submission-id1-20261004.png"
+      "meniere-v011-submission-id1-20261004.png",
+      "meniere-review-resume-20261004-1503.png",
+      "meniere-submission1-resume-20261004.png"
     ],
-    "nextTransition": "Google approval followed by automatic full rollout; public install and AdMob store linking/review still required"
+    "nextTransition": "Google approval followed by automatic full rollout; public installation, AdMob app-ads.txt verification and readiness review remain required; Google Play store link already saved"
   }
 }

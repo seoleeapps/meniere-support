@@ -1,0 +1,76 @@
+{
+  "checkedAt": "2026-10-04T06:16:52.891694+00:00",
+  "profile": "legacy-admob",
+  "accountEmail": "wellknowngeek@gmail.com",
+  "publisherId": "pub-9932778305312246",
+  "androidAppId": "ca-app-pub-9932778305312246~4130423403",
+  "packageName": "com.seoleeapps.menieresupport",
+  "storeLink": {
+    "store": "Google Play",
+    "status": "saved and reread",
+    "savedAt": "2026-10-04T06:07:00.315121+00:00",
+    "searchResult": "com.seoleeapps.menieresupport (unreviewed)",
+    "displayNameAfterLink": "com.seoleeapps.menieresupport (unreviewed)",
+    "appIdChanged": false,
+    "otherAppsChanged": false,
+    "settingsUrl": "https://admob.google.com/v2/apps/4130423403/settings"
+  },
+  "verification": {
+    "status": "failed",
+    "consoleState": "확인 안됨",
+    "readinessState": "검토 필요",
+    "adServingState": "광고 게재가 제한됨; Verify app to lift limit",
+    "readinessReviewStarted": false,
+    "automaticCheckAfterStoreLink": "failed",
+    "explicitUpdateCheckAt": "2026-10-04T06:08:49.113313+00:00",
+    "explicitUpdateCheckResult": "failed with the same message",
+    "verificationViewReopened": "Automatic check on opening Verify app again also failed; no second explicit Update check clicked",
+    "message": "app-ads.txt 파일을 설정했지만 세부정보가 AdMob 계정의 정보와 일치하지 않는 것 같습니다.",
+    "expectedSnippet": "google.com, pub-9932778305312246, DIRECT, f08c47fec0942fa0"
+  },
+  "publicFileChecks": {
+    "url": "https://seorilabs.com/app-ads.txt",
+    "finalUrl": "https://www.seorilabs.com/app-ads.txt",
+    "httpsRootAndWwwStatus": 200,
+    "httpRootAndWwwStatus": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "expectedSnippetPresent": true,
+    "utf8Bom": false,
+    "additionalPublisherRow": "Existing legacy publisher row retained; no unrelated account or site changes",
+    "crawlerUserAgents": ["Google-adstxt", "Mediapartners-Google", "Googlebot"],
+    "crawlerUserAgentResponses": "HTTP 200 and exact expected snippet",
+    "robotsTxtRootAndWww": "HTTP200; User-agent: *; Allow: /"
+  },
+  "crawlStatus": {
+    "consoleUrl": "https://admob.google.com/v2/apps/appadstxt",
+    "allRowsInspected": 17,
+    "targetAppRowPresent": false,
+    "targetCrawlUrl": null,
+    "targetLastCrawlAt": null,
+    "sameAccountOtherApps": "Other apps show https://seorilabs.com/app-ads.txt verified, with last crawl one hour ago",
+    "limitation": "Absence of a row does not identify the exact cause or prove Google attempted to crawl this app at the expected URL"
+  },
+  "diagnosis": {
+    "confirmed": "Store link saved; app remains unverified; public publisher snippet and HTTP/HTTPS/robots checks match requirements",
+    "inference": "New unreviewed Play metadata may not yet be available to the AdMob crawler; this is not established as the root cause",
+    "nextSteps": [
+      "After Play approval/public listing, confirm developer website in App support",
+      "Allow AdMob to detect the listing and crawl; recheck exact app verification status",
+      "After verification, confirm readiness review and approval separately",
+      "Verify actual production banner on the public-installed candidate without clicking ads"
+    ]
+  },
+  "officialReferences": [
+    "https://support.google.com/admob/answer/9776740?hl=en",
+    "https://support.google.com/admob/answer/14538460?hl=en"
+  ],
+  "privateScreenshots": [
+    "meniere-admob-store-linked-20261004-1511.png",
+    "meniere-admob-appads-crawl-table-20261004-1515.png",
+    "meniere-admob-appads-crawl-last-20261004-1516.png",
+    "meniere-admob-verification-failed-20261004-1516.png"
+  ],
+  "publicRelease": "Google Play submission1 for0.1.1/2 remains in review; public live not verified",
+  "supportContact": "No support-team contact or follow-up sent",
+  "userRecords": "No journal reset or device mutation during this continuation; previous verified restoration retained"
+}

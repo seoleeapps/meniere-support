@@ -11,7 +11,8 @@
     "bannerId": "ca-app-pub-9932778305312246/5251758379"
   },
   "format": "banner",
-  "storeVerification": "pending",
-  "umpMessages": "Android app-scoped GDPR and US-states messages published 2026-10-04; device verification pending",
-  "umpEvidence": "release/play-console-evidence.json"
+  "storeVerification": "Android Google Play link saved; app-ads.txt verification failed; readiness review required; iOS store link pending",
+  "umpMessages": "Android app-scoped GDPR and US-states messages published 2026-10-04; SDK request and non-required privacy-options response observed on Play0.1.1/2; regional form display and real ads unverified",
+  "umpEvidence": "release/play-console-evidence.json",
+  "storeVerificationEvidence": "release/admob-store-verification-evidence.json"
 }
