@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T04:00:29.637002+00:00",
+  "checkedAt": "2026-10-04T04:29:14.024547+00:00",
   "developerAccountId": "5547060480954653351",
   "appConsoleId": "4975784705764720395",
   "profile": "legacy-admob",
@@ -21,12 +21,12 @@
   },
   "internalRelease": {
     "trackId": "4701660004128496002",
-    "releaseId": "1",
-    "versionName": "0.1.0",
-    "versionCode": 1,
-    "releaseName": "0.1.0 (1)",
+    "releaseId": "2",
+    "versionName": "0.1.1",
+    "versionCode": 2,
+    "releaseName": "0.1.1 (2)",
     "status": "available to internal testers; owner list selected; unreviewed",
-    "publishedAtConsole": "2026-10-04 09:48 KST",
+    "publishedAtConsole": "2026-10-04 13:19 KST",
     "optInUrl": "https://play.google.com/apps/internaltest/4701660004128496002",
     "releaseNotesLocales": ["en-US", "ko-KR"],
     "warnings": [
@@ -37,7 +37,8 @@
       "members": ["wellknowngeek@gmail.com", "syous.seo@gmail.com"],
       "selectedOnlyForThisApp": true
     },
-    "deviceOptIn": "Seeker Chrome invitation shows Google Account syous.seo@gmail.com and You’re a tester; native Google Play installation verified"
+    "deviceOptIn": "Existing tester enrollment remains valid; device installed0.1.0/1 from Play, update and0.1.1/2 verification pending device availability.",
+    "consoleScreenshot": "meniere-v011-internal-published-20261004-1319.png; private broker evidence archived under artifacts/android-launch-v0.1.1-20261004"
   },
   "admob": {
     "publisherId": "pub-9932778305312246",
@@ -70,10 +71,48 @@
   "supportContact": "No support-team messages or follow-ups sent during this release continuation.",
   "productionDraft": {
     "trackId": "4697443479896998173",
+    "releaseId": "2",
+    "releaseName": "0.1.1 (2)",
+    "versionCode": 2,
+    "status": "saved; not submitted; current Play-installed QA pending",
+    "publishingChanges": 12,
+    "countries": "177 named countries/regions plus Other countries",
+    "rollout": "full after review",
+    "managedPublishing": false,
+    "quickChecks": "Running; max13minutes remaining at2026-10-04 13:29 KST; submission button enabled",
+    "preflightBlockingErrors": null,
+    "preflightWarnings": [
+      "Missing deobfuscation file; candidate minifyEnabled=false"
+    ],
+    "consoleUrl": "https://play.google.com/console/u/0/developers/5547060480954653351/app/4975784705764720395/publishing",
+    "consoleScreenshot": "meniere-v011-production-draft-20261004-1329.png"
+  },
+  "previousInternalRelease": {
+    "trackId": "4701660004128496002",
+    "releaseId": "1",
+    "versionName": "0.1.0",
+    "versionCode": 1,
+    "releaseName": "0.1.0 (1)",
+    "status": "available to internal testers; owner list selected; unreviewed",
+    "publishedAtConsole": "2026-10-04 09:48 KST",
+    "optInUrl": "https://play.google.com/apps/internaltest/4701660004128496002",
+    "releaseNotesLocales": ["en-US", "ko-KR"],
+    "warnings": [
+      "No deobfuscation file; candidate minifyEnabled is false, so no R8 mapping generated"
+    ],
+    "testerList": {
+      "name": "Meniere Journal owner QA",
+      "members": ["wellknowngeek@gmail.com", "syous.seo@gmail.com"],
+      "selectedOnlyForThisApp": true
+    },
+    "deviceOptIn": "Seeker Chrome invitation shows Google Account syous.seo@gmail.com and You’re a tester; native Google Play installation verified"
+  },
+  "previousProductionDraft": {
+    "trackId": "4697443479896998173",
     "releaseId": "1",
     "releaseName": "0.1.0 (1)",
     "versionCode": 1,
-    "status": "saved; not submitted",
+    "status": "Removed from publishing changes before submission because0.1.0/1 failed physical PDF preview QA; uploaded bundle retained in library.",
     "publishingChanges": 12,
     "countries": "177 named countries/regions plus Other countries",
     "rollout": "full after review",

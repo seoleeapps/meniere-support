@@ -1,14 +1,14 @@
 {
-  "checkedAt": "2026-10-04T00:55:08.247337+00:00",
-  "sourceRevision": "20784bb6cb6ef0168c2203f702d2e4e7a248783d",
-  "tag": "v0.1.0",
+  "checkedAt": "2026-10-04T04:17:10.504535+00:00",
+  "sourceRevision": "a76f0880c20a6ef6d8c17958f0cd46203c4d1d91",
+  "tag": "v0.1.1",
   "packageName": "com.seoleeapps.menieresupport",
-  "versionName": "0.1.0",
-  "versionCode": 1,
+  "versionName": "0.1.1",
+  "versionCode": 2,
   "minSdk": 24,
   "targetSdk": 36,
-  "artifact": "artifacts/android-launch-20261004/Meniere-Journal-0.1.0-production.aab",
-  "sha256": "25d7d9c1276f4af6289e2bcb0b064509d539e57fb3c7bd44964d019c34f7292f",
+  "artifact": "artifacts/android-launch-v0.1.1-20261004/Meniere-Journal-0.1.1-production.aab",
+  "sha256": "1635d9f0de4f22f5ad5e30b86cfbbfe693a80d5a70bce9e3131b4550aeeabce0",
   "uploadCertificateSha256": "8D:C5:73:FB:D9:5C:BF:52:07:F0:8B:43:70:6D:8B:70:B7:B3:50:EF:EA:07:B6:0B:27:5D:59:12:49:21:AB:E9",
   "playCertificates": {
     "deployment": "9E:FD:23:5A:69:39:E1:3A:E7:59:D1:BF:BE:F4:77:EF:63:AE:5D:96:F8:CB:0F:16:1C:C3:0E:C0:FA:97:BE:AF",
@@ -16,21 +16,13 @@
     "hybridPqc": "74:A2:D1:D6:99:CB:94:FC:11:45:FC:6C:0C:7A:81:1F:60:45:D8:2A:92:F7:AB:57:36:AF:AA:A9:0C:9F:07:BB"
   },
   "validation": [
-    "pnpm check: 38 tests and TypeScript/architecture/release schema passed",
-    "Expo dependency check passed",
-    "Gradle bundleRelease passed",
-    "bundletool 1.18.3 validate passed",
-    "jarsigner verify passed",
-    "Play upload certificate readback matches local app upload key"
+    "PR9 and merged main CI passed; 41 tests, TypeScript, architecture and metadata schema",
+    "Copilot completed with no findings; native verification remains separate",
+    "Expo dependency check passed; frozen-source production prebuild and Gradle bundleRelease passed",
+    "bundletool 1.18.3 validate passed; jarsigner verify passed",
+    "Embedded upload certificate SHA256 extracted via PKCS7/OpenSSL matches registered Play upload certificate",
+    "Manifest confirms package, 0.1.1/2, min24/target36, nondebuggable, backup disabled and real Android AdMob ID"
   ],
   "installedCandidateQa": "pending",
-  "existingDevice": {
-    "model": "Seeker",
-    "serial": "SM02G4061934977",
-    "androidApi": 36,
-    "version": "0.1.0/1",
-    "installer": null,
-    "certificateSha256": "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C",
-    "dataAction": "No uninstall, clear data, or record mutation performed. Waiting for explicit data-preservation choice."
-  }
+  "previousCandidateQa": "release/android-play-qa-v0.1.0.json"
 }
