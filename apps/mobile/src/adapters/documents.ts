@@ -9,6 +9,15 @@ import {
 import { temporaryDirectory } from "./storage";
 import { renderSummary } from "./document-renderer";
 export const documents: DocumentPort = {
+  async preview(summary, language) {
+    // Android resolves when the print window opens, before it reads its content.
+    // Pass HTML so the native print adapter owns the preview's lifetime.
+    await Print.printAsync({
+      html: renderSummary(summary, language),
+      width: 595,
+      height: 842,
+    });
+  },
   async pdf(summary, language) {
     const printed = await Print.printToFileAsync({
       html: renderSummary(summary, language),
@@ -35,19 +44,16 @@ export const sharing: SharePort = {
   async share(uri, mime) {
     if (!(await Sharing.isAvailableAsync()))
       throw new Error("SHARING_UNAVAILABLE");
-    try {
-      await Sharing.shareAsync(uri, {
-        mimeType: mime,
-        UTI:
-          mime === "application/pdf"
-            ? "com.adobe.pdf"
-            : mime === "text/csv"
-              ? "public.comma-separated-values-text"
-              : "public.data",
-      });
-    } finally {
-      const file = new File(uri);
-      if (file.exists) file.delete();
-    }
+    // Choosing a receiver does not mean it has finished reading the file.
+    // Shared files stay in private cache until the next app initialization/erase.
+    await Sharing.shareAsync(uri, {
+      mimeType: mime,
+      UTI:
+        mime === "application/pdf"
+          ? "com.adobe.pdf"
+          : mime === "text/csv"
+            ? "public.comma-separated-values-text"
+            : "public.data",
+    });
   },
 };

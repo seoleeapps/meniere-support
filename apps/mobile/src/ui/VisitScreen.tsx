@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Alert } from "react-native";
-import * as Print from "expo-print";
-import { File } from "expo-file-system";
 import { localDate, shiftDate, summarize } from "@meniere/product-core";
 import { clock, ids } from "../adapters/storage";
 import { documents, sharing } from "../adapters/documents";
@@ -250,13 +248,7 @@ export function VisitScreen({ journal: j, busy, commit, run }: ScreenProps) {
         onPress={() =>
           void run(async () => {
             if (!summary) return;
-            const uri = await documents.pdf(summary, j.settings.language);
-            try {
-              await Print.printAsync({ uri });
-            } finally {
-              const file = new File(uri);
-              if (file.exists) file.delete();
-            }
+            await documents.preview(summary, j.settings.language);
           })
         }
       />

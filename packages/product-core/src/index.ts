@@ -121,6 +121,7 @@ export interface ReminderPort {
   clear(): Promise<void>;
 }
 export interface DocumentPort {
+  preview(summary: Summary, language: Language): Promise<void>;
   pdf(summary: Summary, language: Language): Promise<string>;
   csv(journal: Journal): Promise<string>;
 }

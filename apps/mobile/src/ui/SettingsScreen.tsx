@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Linking } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
-import { File } from "expo-file-system";
 import {
   mergeRestore,
   previewRestore,
@@ -69,12 +68,7 @@ export function SettingsScreen({
       const uri = await repository.create(password);
       setPassword("");
       setConfirmPassword("");
-      try {
-        await sharing.share(uri, "application/octet-stream");
-      } finally {
-        const file = new File(uri);
-        if (file.exists) file.delete();
-      }
+      await sharing.share(uri, "application/octet-stream");
     });
   const inspect = () =>
     void run(async () => {
