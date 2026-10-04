@@ -32,13 +32,14 @@
     ]
   },
   "contentDeclarations": {
-    "dataSafety": "확정 필요 — SDK 검토 초안만 준비, 콘솔 미신고",
+    "dataSafety": "saved-in-play-console: 2026-10-04; four AdMob SDK data types; review not submitted",
     "contentRating": "IARC questionnaire saved: ESRB Everyone, PEGI 3, Generic 3+; adult 18+ target declared separately",
     "targetAudience": "adults-only-18-and-over",
     "ads": "yes",
     "koreaDistribution": "yes",
     "healthApps": "declared: activity, nutrition, sleep, diseases and conditions management, medical reference and education, physical therapy and rehabilitation; saved and read back in Play Console",
-    "medicalDeviceClassification": "확정 필요 — 국가별 실제 기능 검토 필요"
+    "medicalDeviceClassification": "확정 필요 — 국가별 실제 기능 검토 필요",
+    "dataSafetyCsv": "play-store/policy/data-safety.csv"
   },
   "release": {
     "versionName": "0.1.0",
