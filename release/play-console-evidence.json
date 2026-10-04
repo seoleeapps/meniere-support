@@ -1,0 +1,87 @@
+{
+  "checkedAt": "2026-10-04T01:03:10.283793+00:00",
+  "developerAccountId": "5547060480954653351",
+  "appConsoleId": "4975784705764720395",
+  "profile": "legacy-admob",
+  "packageName": "com.seoleeapps.menieresupport",
+  "storeListing": {
+    "status": "saved; ready to send for review",
+    "locales": ["en-US", "ko-KR"],
+    "source": "play-store/google-play.config.json",
+    "textReadbackMatchesSource": true,
+    "assets": [
+      "icon-512.png",
+      "feature-1024x500.png",
+      "01-today.png",
+      "02-exercise-guide.png",
+      "03-exercise-demo.png",
+      "04-records.png",
+      "05-visit-summary.png"
+    ]
+  },
+  "internalRelease": {
+    "trackId": "4701660004128496002",
+    "releaseId": "1",
+    "versionName": "0.1.0",
+    "versionCode": 1,
+    "releaseName": "0.1.0 (1)",
+    "status": "available to internal testers; owner list selected; unreviewed",
+    "publishedAtConsole": "2026-10-04 09:48 KST",
+    "optInUrl": "https://play.google.com/apps/internaltest/4701660004128496002",
+    "releaseNotesLocales": ["en-US", "ko-KR"],
+    "warnings": [
+      "No deobfuscation file; candidate minifyEnabled is false, so no R8 mapping generated"
+    ],
+    "testerList": {
+      "name": "Meniere Journal owner QA",
+      "members": ["wellknowngeek@gmail.com"],
+      "selectedOnlyForThisApp": true
+    }
+  },
+  "admob": {
+    "publisherId": "pub-9932778305312246",
+    "androidAppId": "ca-app-pub-9932778305312246~4130423403",
+    "gdpr": {
+      "name": "Meniere Journal Android GDPR",
+      "status": "published",
+      "scope": "Meniere Journal Android only",
+      "language": "en",
+      "privacyPolicyUrl": "https://seorilabs.com/en/apps/meniere-support/privacy/",
+      "consent": true,
+      "manageOptions": true,
+      "rejectInAllRegions": true,
+      "closeButton": false
+    },
+    "usStates": {
+      "name": "Meniere Journal Android US states",
+      "status": "published",
+      "scope": "Meniere Journal Android only",
+      "language": "en-US",
+      "target": "all currently supported and future supported US states",
+      "optOut": true
+    },
+    "sharedMessagesChanged": false,
+    "note": "Publication can take up to one hour to propagate; publishing is not device consent or real-ad verification.",
+    "appAdsTxt": "https://seorilabs.com/app-ads.txt includes google.com, pub-9932778305312246, DIRECT, f08c47fec0942fa0; HTTP 200"
+  },
+  "productionSubmission": "not submitted",
+  "publicRelease": "not live",
+  "supportContact": "No support-team messages or follow-ups sent during this release continuation.",
+  "productionDraft": {
+    "trackId": "4697443479896998173",
+    "releaseId": "1",
+    "releaseName": "0.1.0 (1)",
+    "versionCode": 1,
+    "status": "saved; not submitted",
+    "publishingChanges": 12,
+    "countries": "177 named countries/regions plus Other countries",
+    "rollout": "full after review",
+    "managedPublishing": false,
+    "quickChecks": "passed; Console says changes can be sent for review",
+    "preflightBlockingErrors": 0,
+    "preflightWarnings": [
+      "Missing deobfuscation file; candidate minifyEnabled=false"
+    ],
+    "consoleUrl": "https://play.google.com/console/u/0/developers/5547060480954653351/app/4975784705764720395/publishing"
+  }
+}
