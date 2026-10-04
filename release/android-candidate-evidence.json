@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-04T04:17:10.504535+00:00",
+  "checkedAt": "2026-10-04T05:50:52.680993+00:00",
   "sourceRevision": "a76f0880c20a6ef6d8c17958f0cd46203c4d1d91",
   "tag": "v0.1.1",
   "packageName": "com.seoleeapps.menieresupport",
@@ -23,6 +23,7 @@
     "Embedded upload certificate SHA256 extracted via PKCS7/OpenSSL matches registered Play upload certificate",
     "Manifest confirms package, 0.1.1/2, min24/target36, nondebuggable, backup disabled and real Android AdMob ID"
   ],
-  "installedCandidateQa": "pending",
-  "previousCandidateQa": "release/android-play-qa-v0.1.0.json"
+  "installedCandidateQa": "critical product flows passed; see release/android-play-qa-v0.1.1.json for known issue and limits",
+  "previousCandidateQa": "release/android-play-qa-v0.1.0.json",
+  "installedCandidateQaEvidence": "release/android-play-qa-v0.1.1.json"
 }

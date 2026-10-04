@@ -11,7 +11,7 @@
   },
   "ledger": {
     "createdAt": "2026-10-03T04:46:14Z",
-    "updatedAt": "2026-10-04T00:59:21.791619+00:00",
+    "updatedAt": "2026-10-04T05:50:52.680993+00:00",
     "currentReleaseLedger": "release/market-launch-state.json"
   },
   "sections": {
@@ -761,12 +761,17 @@
               "kind": "document",
               "ref": "apps/mobile/src/adapters/reminders.ts",
               "observedAt": "2026-10-03T05:26:44Z"
+            },
+            {
+              "kind": "document",
+              "ref": "release/android-play-qa-v0.1.1.json",
+              "observedAt": "2026-10-04T05:50:52.680993+00:00"
             }
           ],
-          "checkedAt": "2026-10-03T05:26:44Z",
+          "checkedAt": "2026-10-04T05:50:52.680993+00:00",
           "reviewBy": null,
           "blocker": null,
-          "notes": null
+          "notes": "Android0.1.1/2: permission granted, original20:00unpaused reminder restored and app alarm present; actual scheduled delivery not observed."
         },
         {
           "id": "backend.platform_identity",
@@ -1568,12 +1573,18 @@
           "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
-          "value": "검증 필요",
+          "value": "Android Play0.1.1/2 verified on Seeker API36; iOS not in this launch scope",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": "2026-10-03T05:26:44Z",
+          "evidence": [
+            {
+              "kind": "document",
+              "ref": "release/android-play-qa-v0.1.1.json",
+              "observedAt": "2026-10-04T05:50:52.680993+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-04T05:50:52.680993+00:00",
           "reviewBy": null,
-          "blocker": "Android 실기기 통과. iOS 실기기·큰 글씨·화면 읽기 QA 필요",
+          "blocker": "iOS physical QA and broader accessibility/device coverage remain unverified",
           "notes": null
         },
         {
@@ -1589,9 +1600,14 @@
               "kind": "document",
               "ref": "docs/qa.md",
               "observedAt": "2026-10-03T05:26:44Z"
+            },
+            {
+              "kind": "document",
+              "ref": "release/android-play-qa-v0.1.1.json",
+              "observedAt": "2026-10-04T05:50:52.680993+00:00"
             }
           ],
-          "checkedAt": "2026-10-03T05:26:44Z",
+          "checkedAt": "2026-10-04T05:50:52.680993+00:00",
           "reviewBy": null,
           "blocker": null,
           "notes": null
@@ -1622,13 +1638,19 @@
           "appliesTo": ["all"],
           "reviewCadence": "per_release",
           "status": "blocked",
-          "value": "검증 필요",
+          "value": "Android production banner SDK requests observed; actual rendering and regional forms unverified",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": "2026-10-03T05:26:44Z",
+          "evidence": [
+            {
+              "kind": "document",
+              "ref": "release/android-play-qa-v0.1.1.json",
+              "observedAt": "2026-10-04T05:50:52.680993+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-04T05:50:52.680993+00:00",
           "reviewBy": null,
-          "blocker": "배너 생성 완료, 국가별 동의·실광고 검증 전",
-          "notes": null
+          "blocker": "AdMob store linking/app review after public release; actual banner/region consent tests pending",
+          "notes": "Optional privacy-options request on a non-required device shows generic operation-error alert; core flows unaffected"
         },
         {
           "id": "qa.failure_states",
@@ -1643,9 +1665,14 @@
               "kind": "document",
               "ref": "docs/qa.md",
               "observedAt": "2026-10-03T05:26:44Z"
+            },
+            {
+              "kind": "document",
+              "ref": "release/android-play-qa-v0.1.1.json",
+              "observedAt": "2026-10-04T05:50:52.680993+00:00"
             }
           ],
-          "checkedAt": "2026-10-03T05:26:44Z",
+          "checkedAt": "2026-10-04T05:50:52.680993+00:00",
           "reviewBy": null,
           "blocker": null,
           "notes": null
@@ -1658,11 +1685,17 @@
           "status": "pending",
           "value": "검증 또는 출시 후 확인 필요",
           "owner": "Seorilabs",
-          "evidence": [],
-          "checkedAt": null,
+          "evidence": [
+            {
+              "kind": "document",
+              "ref": "release/android-play-qa-v0.1.1.json",
+              "observedAt": "2026-10-04T05:50:52.680993+00:00"
+            }
+          ],
+          "checkedAt": "2026-10-04T05:50:52.680993+00:00",
           "reviewBy": null,
           "blocker": null,
-          "notes": null
+          "notes": "No previous public release exists. Internal Play1→2 in-place update verified; full original encrypted archive restore/equality after cold start verified separately."
         },
         {
           "id": "qa.performance_accessibility",
