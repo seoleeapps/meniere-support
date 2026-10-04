@@ -20,7 +20,9 @@
     "approvedAt": "2026-10-03T13:05:10.619344+00:00",
     "evidence": [
       "2026-10-03 user: 안드로이드 출시까지 진행해. legacy-admob 프로필로",
-      "docs/approved-contract.md"
+      "docs/approved-contract.md",
+      "2026-10-04 user clarified that 승인한다. meant app submission, not a support inquiry. Existing Android public launch approval remains in scope.",
+      "2026-10-04 user: 굳이 문의를 왜 해 어차피 안되면 심사에서 걸렀겠지. Proceed with truthful app submission; support reply is not a pre-submission dependency."
     ]
   },
   "commonGates": {
@@ -107,9 +109,10 @@
           "status": "pending",
           "evidence": [
             "play-store/assets-manifest.json: existing-logo 512px icon, 1024x500 real-screen feature, 5 actual Android screenshots at 1080x1920; visual inspection and exact size/background validation passed.",
-            "Listing config validation passed only with console gates and missing tablet images allowed. Images are local, not uploaded to Play."
+            "Listing config validation passed only with console gates and missing tablet images allowed. Images are local, not uploaded to Play.",
+            "2026-10-04 Console save/readback: App, Health & Fitness; support email cs@seorilabs.com and website https://seorilabs.com/. Store listing and image upload remain pending."
           ],
-          "checkedAt": "2026-10-03T13:38:19.927599+00:00",
+          "checkedAt": "2026-10-04T00:14:31.508703+00:00",
           "blocker": null
         },
         "policy": {
@@ -117,9 +120,11 @@
           "evidence": [
             "Live app 4975784705764720395: health, privacy URL, ads yes, access unrestricted, government no, financial none, 18+ target and AD_ID purposes saved. IARC questionnaire summary saved: ESRB Everyone, PEGI 3.",
             "Google Play account policy requires Organization for Medical health services; current app contains declared disease-management and rehabilitation features. Existing personal-account applicability remains unconfirmed. No account conversion or regulatory certification is claimed.",
-            "2026-10-04 user approved sending the prepared inquiry. Console showed ticket submitted for Meniere Journal, creator wellknowngeek@gmail.com; case 6-9591000041645 open and submitted summary reread. Support response pending. play-store/policy/account-eligibility-question.md and account-eligibility-receipt.json preserve the approved full attachment and receipt. No account conversion performed; clinician product review and country classification remain uncompleted."
+            "2026-10-04: Support inquiry was sent due to our mistaken interpretation of app-submission approval. Actual case 6-9591000041645 and sent content are retained in play-store/policy/account-eligibility-question.md and account-eligibility-receipt.json. User clarified app submission was intended. Support reply and account eligibility remain unresolved; no account conversion performed.",
+            "2026-10-04: Data Safety final save confirmed; exact Console CSV in play-store/policy/data-safety.csv declares four AdMob SDK types collected/shared, required, non-ephemeral, analytics/advertising/fraud purposes; encrypted transit, no account and no SDK-data deletion request. This is saved, not submitted or approved.",
+            "Support reply is not required before submission. No further support contact; explicit recipient/content approval question required for any future message."
           ],
-          "checkedAt": "2026-10-03T23:07:23.738132+00:00",
+          "checkedAt": "2026-10-04T00:14:31.508703+00:00",
           "blocker": null
         },
         "submission": {
@@ -153,6 +158,7 @@
     "This replaces the original QA-only custom ledger. Its source, incomplete clinician review, country classification, UMP, policy declarations and store assets remain preserved in repository history and docs/qa.md.",
     "Public objective remains approved. User clarified a personal record and previously learned exercise support tool, not a medical-device or clinical-service launch.",
     "Personal account allowed app creation and truthful health-feature declaration save. No final review has occurred; do not infer public eligibility from form save.",
-    "Candidate freeze, Play-installed QA, policy/metadata readiness and country selection are still pending."
+    "Candidate freeze, Play-installed QA, policy/metadata readiness and country selection are still pending.",
+    "User requires explicit recipient/content approval with 지원팀에 요청을 보내겠습니까? before any support contact. No further contact on case 6-9591000041645; existing inquiry/withdrawal were sent and are recorded, not eligibility evidence or a prerequisite to submission."
   ]
 }
