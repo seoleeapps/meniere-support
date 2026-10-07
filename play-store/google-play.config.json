@@ -42,12 +42,12 @@
     "dataSafetyCsv": "play-store/policy/data-safety.csv"
   },
   "release": {
-    "versionName": "0.1.1",
-    "versionCode": 2,
-    "track": "production",
+    "versionName": "0.1.2",
+    "versionCode": 3,
+    "track": "internal",
     "releaseNotes": {
-      "ko-KR": "증상·생활 기록, 진료 PDF와 암호화 백업, 시선 안정화·균형 운동 프로그램을 제공합니다.",
-      "en-US": "Record symptoms and habits, prepare appointment PDFs, save encrypted backups, and follow clinician-agreed exercises."
+      "ko-KR": "- 증상을 아이콘과 이름이 있는 카드로 선택할 수 있어요.\n- 선택한 증상에 색상과 체크 표시를 보여 주고, 증상 입력을 먼저 배치했어요.\n- 작은 화면과 큰 글자에서도 증상명을 읽기 편하게 개선했어요.",
+      "en-US": "- Select symptoms using cards with icons and names.\n- Selected symptoms show a color and check mark, and symptom selection appears first.\n- Symptom names are easier to read on small screens and with larger text."
     }
   }
 }
