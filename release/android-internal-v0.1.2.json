@@ -1,0 +1,83 @@
+{
+  "checkedAt": "2026-10-07T10:15:14.051940+00:00",
+  "sourceRevision": "115b644d2c3de222783993a72f81e15abba631ff",
+  "tag": "v0.1.2",
+  "packageName": "com.seoleeapps.menieresupport",
+  "versionName": "0.1.2",
+  "versionCode": 3,
+  "minSdk": 24,
+  "targetSdk": 36,
+  "artifact": "artifacts/android-internal-v0.1.2-20261007/Meniere-Journal-0.1.2-production.aab",
+  "sha256": "e60d03ea80e0a75d57f878a0a62dded097a88a2cf4b5960dcad612388178c63f",
+  "uploadCertificateSha256": "8D:C5:73:FB:D9:5C:BF:52:07:F0:8B:43:70:6D:8B:70:B7:B3:50:EF:EA:07:B6:0B:27:5D:59:12:49:21:AB:E9",
+  "bundletoolValid": true,
+  "signatureValid": true,
+  "manifestVerified": true,
+  "realAdMobIdVerified": true,
+  "native64BitLibrariesChecked": 38,
+  "nativeLoadAlignment16KB": true,
+  "objective": "internal_available",
+  "developerAccount": {
+    "name": "Seolee Apps",
+    "type": "personal",
+    "id": "5547060480954653351"
+  },
+  "releasePreparationPr": "https://github.com/seoleeapps/meniere-support/pull/14",
+  "sourceCi": "https://github.com/seoleeapps/meniere-support/actions/runs/37604684511",
+  "upload": {
+    "readbackAt": "2026-10-07T10:17:19.078941+00:00",
+    "track": "internal",
+    "status": "completed",
+    "versionCodes": ["3"],
+    "sha256Matches": true,
+    "commitReviewBehavior": "ERROR_IF_IN_REVIEW",
+    "releaseNotes": [
+      {
+        "language": "ko-KR",
+        "text": "- 증상을 아이콘과 이름이 있는 카드로 선택할 수 있어요.\n- 선택한 증상에 색상과 체크 표시를 보여 주고, 증상 입력을 먼저 배치했어요.\n- 작은 화면과 큰 글자에서도 증상명을 읽기 편하게 개선했어요."
+      },
+      {
+        "language": "en-US",
+        "text": "- Select symptoms using cards with icons and names.\n- Selected symptoms show a color and check mark, and symptom selection appears first.\n- Symptom names are easier to read on small screens and with larger text."
+      }
+    ]
+  },
+  "console": {
+    "checkedAt": "2026-10-07T10:19:14.388049+00:00",
+    "url": "https://play.google.com/console/u/0/developers/5547060480954653351/app/4975784705764720395/tracks/4701660004128496002",
+    "status": "내부 테스터에게 제공됨",
+    "screenshot": "artifacts/android-internal-v0.1.2-20261007/meniere-internal-0.1.2-provided.png"
+  },
+  "testers": {
+    "checkedAt": "2026-10-07T10:20:04.895755+00:00",
+    "selection": [
+      {
+        "listName": "Meniere Journal owner QA",
+        "userCount": 2,
+        "selected": true
+      }
+    ],
+    "changed": false,
+    "optInUrl": "https://play.google.com/apps/internaltest/4701660004128496002",
+    "optInStatus": "registered tester page verified"
+  },
+  "production": {
+    "changed": false,
+    "releaseName": "0.1.1 (2)",
+    "versionCodes": ["2"],
+    "status": "completed"
+  },
+  "validation": [
+    "pnpm check: TypeScript, core 33 and platform 8 tests, architecture and metadata schema passed",
+    "expo install --check and Android export passed",
+    "release preparation PR CI and fixed source main CI passed",
+    "production prebuild and signed Gradle bundleRelease passed",
+    "bundletool 1.18.3 validate and jarsigner verify passed",
+    "manifest, production AdMob ID, registered upload certificate and 38 native 64-bit library alignments checked",
+    "uploaded bundle SHA256 and localized notes match the local candidate",
+    "fresh API and Console readback show internal 0.1.2/3 completed and available to internal testers",
+    "existing owner QA list of 2 testers and verified internaltest link preserved"
+  ],
+  "installedCandidateQa": "pending: Play-installed physical-device verification not performed in this internal-upload task",
+  "actualAdServing": "not verified; AdMob verification and readiness were not changed"
+}

@@ -116,3 +116,16 @@ PDF 미리보기는 Android 인쇄 화면에 실제 한 페이지로 표시됐�
 AdMob app-ads.txt 목록의 17개 행 전체에는 이 앱이 없다. 따라서 이 앱이 실제로 확인한 URL이나 마지막 크롤링 시각은 조회할 수 없다. 새 미검토 Play 등록정보의 감지 지연은 가능성이지 확정된 원인이 아니다. [Google의 문제 해결 안내](https://support.google.com/admob/answer/9776740?hl=en)는 스토어의 개발자 웹사이트를 기준으로 확인하며 최근 등록정보 변경 감지에 최대 24시간이 걸릴 수 있다고 설명한다. 공개 후 App support의 개발자 웹사이트와 실제 앱 인증을 다시 확인한다. [앱 인증 안내](https://support.google.com/admob/answer/14538460?hl=en)에 따라 인증과 준비 상태 심사 승인은 별도로 확인해야 한다.
 
 현재 증거는 [AdMob 연결·인증 기록](../release/admob-store-verification-evidence.json)이다. 15:16 KST Play 제출 ID `1`은 여전히 `검토 중`이며 관리형 게시 사용 중지와 승인 후 전체 출시 설정을 유지한다. 고정 후보는 바꾸거나 다시 제출하지 않았다. 이번 진행에서 기기 기록을 변경하거나 지원팀에 연락하지 않았다. Google 승인·공개 채널 설치·AdMob 인증 및 심사·실제 광고 표시가 남아 있어 공개 출시 완료로 판정하지 않는다.
+
+
+## 0.1.2 / 3 내부 테스트 게시 · 2026-10-07
+
+증상 카드 선택·선택 표시·입력 순서를 개선한 [PR #13](https://github.com/seoleeapps/meniere-support/pull/13)을 포함해, [PR #14](https://github.com/seoleeapps/meniere-support/pull/14)에서 0.1.2 / versionCode 3과 한영 출시 노트를 준비했다. 고정 태그는 `v0.1.2`, 소스는 `115b644d2c3de222783993a72f81e15abba631ff`다. 이 저장소의 기존 로컬 production prebuild·서명 빌드 절차를 유지했다.
+
+타입·코어 33개·플랫폼 8개 테스트·구조·메타데이터 형식 검사, Expo 호환 버전 검사·Android export, PR과 고정 소스 main CI가 통과했다. 새 SDK 패치를 포함한 실제 AAB의 Gradle release 빌드, bundletool·서명 검사도 통과했다. 실제 매니페스트의 패키지·0.1.2/3·min24/target36·비디버그·백업 금지·실제 Android AdMob ID, live Play 업로드 인증서 일치와 64비트 네이티브 라이브러리 38개의 16KB LOAD 정렬을 확인했다. AAB SHA-256은 `e60d03ea80e0a75d57f878a0a62dded097a88a2cf4b5960dcad612388178c63f`다. 이 정렬 검사는 16KB 기기의 실제 실행 증거가 아니다.
+
+같은 Seolee Apps 개인 계정 `5547060480954653351`과 대상 패키지를 재조회한 뒤 Publisher API로 internal 트랙만 업데이트했다. 업로드된 bundle의 SHA-256·버전 코드와 ko-KR·en-US 최종 출시 노트가 원본과 일치하며, 새 API 조회에서 `internal / completed / 3`을 확인했다. 19:19 KST Console 조회는 **0.1.2 (3) · 내부 테스터에게 제공됨**, 게시일 19:17 KST다. 기존 Meniere Journal owner QA 목록 2명을 유지했고, [내부 테스트 참여 링크](https://play.google.com/apps/internaltest/4701660004128496002)에서 현재 계정의 테스터 등록과 대상 앱을 확인했다. 내부 테스트 링크는 이 트랙의 `apps/internaltest` 주소를 사용한다.
+
+프로덕션은 0.1.1 (2) / completed로 동일하다. 다른 트랙·테스터·스토어 등록정보·AdMob 설정은 수정하지 않았다. 현재 바이너리의 Play 설치·실기기 실행과 실제 운영 광고는 이번 업로드 작업에서 확인하지 않았다. 기존 iOS 시뮬레이터의 증상 카드 화면 근거는 [출시 후 점검](post-launch-check-20261007.md)에 있으며, 이를 새 Android 후보의 실기기 검증으로 취급하지 않는다.
+
+새 후보 근거는 [내부 테스트 0.1.2 기록](../release/android-internal-v0.1.2.json), 서명 AAB·API 응답·Console 캡처·빌드와 검증 로그는 로컬 `artifacts/android-internal-v0.1.2-20261007/`에 보관한다. 기존 0.1.1 공개 후보와 제출·QA 기록은 과거 근거로 유지한다.
