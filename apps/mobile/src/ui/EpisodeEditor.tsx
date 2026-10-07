@@ -110,12 +110,6 @@ export function EpisodeEditor({
     <>
       <Button secondary label={t("돌아가기", "Back")} onPress={onBack} />
       <Heading>{t("발작 기록", "Episode record")}</Heading>
-      <Copy muted>
-        {t(
-          "기억나는 만큼만 남겨도 됩니다. 모르는 시각은 그대로 두세요.",
-          "Enter what you remember. It is okay to leave times unknown.",
-        )}
-      </Copy>
       <SymptomChoices
         selected={e.symptoms}
         disabled={busy}
@@ -129,6 +123,12 @@ export function EpisodeEditor({
           }))
         }
       />
+      <Copy muted>
+        {t(
+          "기억나는 만큼만 남겨도 됩니다. 모르는 시각은 그대로 두세요.",
+          "Enter what you remember. It is okay to leave times unknown.",
+        )}
+      </Copy>
       <Field
         label={t("발생일 · YYYY-MM-DD", "Occurrence date · YYYY-MM-DD")}
         value={e.date}
