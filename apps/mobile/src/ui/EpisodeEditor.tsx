@@ -3,7 +3,6 @@ import { Platform, View } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import {
   localDate,
-  symptoms,
   unknownTime,
   type Accuracy,
   type Episode,
@@ -15,10 +14,10 @@ import {
   accuracyName,
   earName,
   impactName,
-  symptomName,
   timeName,
   translator,
 } from "./labels";
+import { SymptomChoices } from "./SymptomChoices";
 function TimeField({
   label,
   time,
@@ -117,6 +116,19 @@ export function EpisodeEditor({
           "Enter what you remember. It is okay to leave times unknown.",
         )}
       </Copy>
+      <SymptomChoices
+        selected={e.symptoms}
+        disabled={busy}
+        t={t}
+        onChange={(s) =>
+          set((current) => ({
+            ...current,
+            symptoms: current.symptoms.includes(s)
+              ? current.symptoms.filter((x) => x !== s)
+              : [...current.symptoms, s],
+          }))
+        }
+      />
       <Field
         label={t("발생일 · YYYY-MM-DD", "Occurrence date · YYYY-MM-DD")}
         value={e.date}
@@ -154,21 +166,6 @@ export function EpisodeEditor({
         zone={e.timeZone}
         language={language}
         onChange={(recovery) => set({ ...e, recovery })}
-      />
-      <Choices
-        label={t("증상 · 선택 사항", "Symptoms · optional")}
-        values={symptoms}
-        selected={e.symptoms}
-        multiple
-        name={(s) => symptomName(s, t)}
-        onChange={(s) =>
-          set({
-            ...e,
-            symptoms: e.symptoms.includes(s)
-              ? e.symptoms.filter((x) => x !== s)
-              : [...e.symptoms, s],
-          })
-        }
       />
       <Choices
         label={t("귀", "Ear")}
